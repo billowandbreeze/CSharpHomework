@@ -43,7 +43,7 @@ namespace Calculator1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(526, 270);
+            this.button1.Location = new System.Drawing.Point(519, 267);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 44);
             this.button1.TabIndex = 0;

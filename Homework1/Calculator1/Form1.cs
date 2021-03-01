@@ -36,33 +36,6 @@ namespace Calculator1
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            s = textBox3.Text;
-
-            switch (s)
-            {
-                case "+":
-                    res = d1 + d2;
-                    break;
-                case "-":
-                    res = d1 - d2;
-                    break;
-                case "*":
-                    res = d1 * d2;
-                    break;
-                case "/":
-                    res = d1 / d2;
-                    break;
-                case "%":
-                    res = d1 % d2;
-                    break;
-                default:
-                    Console.WriteLine("您输入的符号无法识别");
-                    return;
-            }
-        }
-
         private void label5_Click(object sender, EventArgs e)
         {
 
@@ -92,6 +65,38 @@ namespace Calculator1
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             d2 = double.Parse(textBox2.Text);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            s = comboBox1.Text;
+
+            switch (s)
+            {
+                case "+":
+                    res = d1 + d2;
+                    break;
+                case "-":
+                    res = d1 - d2;
+                    break;
+                case "*":
+                    res = d1 * d2;
+                    break;
+                case "/":
+                    res = d1 / d2;
+                    break;
+                case "%":
+                    res = d1 % d2;
+                    break;
+                default:
+                    Console.WriteLine("您输入的符号无法识别");
+                    return;
+            }
         }
     }
 }

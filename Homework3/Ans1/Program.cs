@@ -28,6 +28,18 @@ namespace Ans1
             area = length * width;
         }
 
+        public double Length
+        {
+            get => length;
+            set => length = value;
+        }
+
+        public double Width
+        {
+            get => width;
+            set => width = value;
+        }
+
         public double Area
         {
             get
@@ -62,6 +74,12 @@ namespace Ans1
         {
             this.radius = radius;
             area = radius * radius * 3.14;
+        }
+
+        public double Radius
+        {
+            get => radius;
+            set => radius = value;
         }
 
         public double Area {
@@ -101,6 +119,24 @@ namespace Ans1
             double temp = (side1 + side2 + side3) / 2;
             area = Math.Sqrt(temp * Math.Abs(temp - side1) * Math.Abs(temp - side2) * Math.Abs(temp - side3));
             area = Math.Round(area, 2);
+        }
+
+        public double Side1
+        {
+            get => side1;
+            set => side1 = value;
+        }
+
+        public double Side2
+        {
+            get => side2;
+            set => side2 = value;
+        }
+
+        public double Side3
+        {
+            get => side3;
+            set => side3 = value;
         }
 
         public double Area

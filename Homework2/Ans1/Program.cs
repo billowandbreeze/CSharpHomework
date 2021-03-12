@@ -8,6 +8,7 @@ namespace Ans1
         {
             int num;
             Tool tool = new Tool();
+
             Console.WriteLine("请输入一个数字：");
             try
             {
@@ -15,11 +16,18 @@ namespace Ans1
             }
             catch
             {
-                Console.WriteLine("您输入的不是数字！");
+                Console.WriteLine("您的输入有错误！");
                 return;
             }
 
-            tool.PrintAns(num);
+            if(num <= 0)
+            {
+                Console.WriteLine("输入的数字需要大于0！");
+            }
+            else
+            {
+                tool.PrintAns(num);
+            }
         }
     }
 

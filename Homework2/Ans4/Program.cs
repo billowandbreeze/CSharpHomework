@@ -30,7 +30,7 @@ namespace Ans4
             };*/
 
             Tool tool = new Tool();
-            Console.WriteLine("该矩阵是否是Toeplitz矩阵：" + tool.IsToeplitz(arr, 4, 4));
+            Console.WriteLine("该矩阵是否是Toeplitz矩阵：" + tool.IsToeplitz(arr, m, n));
         }
     }
 
@@ -43,7 +43,22 @@ namespace Ans4
                 return true;
             }
 
-            //对第一行检验
+            for(int i = 1; i < m; i++)
+            {
+                for(int j = 1; j < n; j++)
+                {
+                    if(arr[i - 1, j - 1] != arr[i, j])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+
+            return true;
+
+            /*繁琐版本
+            对第一行检验
             for(int a = 0; a < n; a++)
             {
                 int temp = arr[0,a];
@@ -81,9 +96,7 @@ namespace Ans4
                     i++;
                     j++;
                 }
-            }
-
-            return true;
+            }*/
         }
     }
 }

@@ -6,29 +6,8 @@ namespace Ans1
     {
         static void Main(string[] args)
         {
-            /*测试代码
-            Rect r = new Rect(10, 20);
-            Sqare s = new Sqare(10);
-            Circle c = new Circle(10);
-            Triangle t1 = new Triangle(3, 4, 5);
-            Triangle t2 = new Triangle(3, 4, 8);
-
-            Console.WriteLine("它们是否是合法形状");
-            Console.WriteLine("长方形：" + r.IsLegal());
-            Console.WriteLine("正方形：" + s.IsLegal());
-            Console.WriteLine("圆形：" + c.IsLegal());
-            Console.WriteLine("三角形1：" + t1.IsLegal());
-            Console.WriteLine("三角形2：" + t2.IsLegal());
-
-            Console.WriteLine();
-            Console.WriteLine("它们的面积是");
-            Console.WriteLine("长方形：" + r.Area);
-            Console.WriteLine("正方形：" + s.Area);
-            Console.WriteLine("圆形：" + c.Area);
-            Console.WriteLine("三角形1：" + t1.Area);*/
-
             Factory factory = new Factory();
-            Console.WriteLine(factory.GetSumArea());
+            Console.WriteLine("总面积为：" + factory.GetSumArea());
         }
     }
 
@@ -118,8 +97,10 @@ namespace Ans1
             this.side2 = side2;
             this.side3 = side3;
 
+            //海伦公式
             double temp = (side1 + side2 + side3) / 2;
             area = Math.Sqrt(temp * Math.Abs(temp - side1) * Math.Abs(temp - side2) * Math.Abs(temp - side3));
+            area = Math.Round(area, 2);
         }
 
         public double Area
@@ -155,7 +136,7 @@ namespace Ans1
         public Shape creatShape(int randomNum)
         {
             Shape s = null;
-            Random r = new Random();
+            Random r = new Random();    //产生边长的随机数
 
             if(randomNum == 0)
             {
@@ -223,6 +204,8 @@ namespace Ans1
                 int randomNum = seed.Next() % 4;
                 sumArea += this.creatShape(randomNum).Area;
             }
+
+            sumArea = Math.Round(sumArea, 2);
 
             return sumArea;
         }

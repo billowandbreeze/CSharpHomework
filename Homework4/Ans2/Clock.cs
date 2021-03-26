@@ -11,7 +11,7 @@ namespace Ans2
         public event ClockHandler Tick;
         public event ClockHandler Alarm;
 
-        public String DT
+        public String AlarmTime
         {
             get; set;
         }
@@ -25,7 +25,6 @@ namespace Ans2
             else
             {
                 Console.WriteLine("TickEvent not fire");
-                Console.ReadKey();
             }
         }
 
@@ -38,26 +37,20 @@ namespace Ans2
             else
             {
                 Console.WriteLine("AlarmEvent not fire");
-                Console.ReadKey();
             }
         }
 
-        public void MyTick()
+        public void StartTick()
         {
             while (true)
             {
                 Thread.Sleep(1000);
                 OnTick();
 
-                MyAlarm();
-            }
-        }
-
-        public void MyAlarm()
-        {
-            if(DT == DateTime.Now.ToString())
-            {
-                OnAlarm();
+                if (AlarmTime == DateTime.Now.ToString())
+                {
+                    OnAlarm();
+                }
             }
         }
     }

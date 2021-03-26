@@ -11,8 +11,8 @@ namespace Ans2
             c.Tick += new Clock.ClockHandler(d.PrintTick);
             c.Alarm += new Clock.ClockHandler(d.PrintAlarm);
 
-            c.DT = DateTime.Now.AddSeconds(5).ToString();
-            c.MyTick();
+            c.AlarmTime = DateTime.Now.AddSeconds(5).ToString();
+            c.StartTick();
         }
     }
 }

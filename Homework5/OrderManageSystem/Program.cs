@@ -34,6 +34,15 @@ namespace OrderManageSystem
 
             //order1.ShowDetails();
 
+            /*try 
+            { 
+                OrderDetails temp = order1.FindDetails(good5); 
+            } 
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }*/
+
             OrderDetails temp = order1.FindDetails(good2);
             order1.ChangeDetails(temp, good5, 2);
 
@@ -78,6 +87,23 @@ namespace OrderManageSystem
 
             Console.WriteLine("---------查询订单金额为1117的订单---------");
             orderService.FindOrderByPrize(1117);
+
+
+            Console.WriteLine("---------按订单号升序排序功能---------");
+            orderService.Orders.Sort((o1, o2) => int.Parse(o1.ID) - int.Parse(o2.ID));
+            orderService.ShowOrder();
+
+            Console.WriteLine("---------按订单号降序排序功能---------");
+            orderService.Orders.Sort((o1, o2) => int.Parse(o2.ID) - int.Parse(o1.ID));
+            orderService.ShowOrder();
+
+            Console.WriteLine("---------按价格升序排序功能---------");
+            orderService.Orders.Sort((o1, o2) => (int)o1.TotalPrize - (int)o2.TotalPrize);
+            orderService.ShowOrder();
+
+            Console.WriteLine("---------按价格降序排序功能---------");
+            orderService.Orders.Sort((o1, o2) => (int)o2.TotalPrize - (int)o1.TotalPrize);
+            orderService.ShowOrder();
         }
     }
 }

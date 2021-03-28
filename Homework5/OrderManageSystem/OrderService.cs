@@ -24,7 +24,8 @@ namespace OrderManageSystem
             {
                 if(o == order)
                 {
-                    //报错
+                    Exception e = new Exception("The same order!");
+                    throw e;
                 }
             }
 
@@ -42,21 +43,24 @@ namespace OrderManageSystem
                 }
             }
 
-            //抛出异常
+            Exception e = new Exception("Can't remove: can't find the order!");
+            throw e;
         }
 
-        public void ChangeOrder(Order order, Good goods, int num)
+        public void ChangeOrder(Order order, String id, Client client)
         {
             foreach (Order o in orders)
             {
                 if (o == order)
                 {
-                    //条件还没写
+                    o.ID = id;
+                    o.Client = client;
                     return;
                 }
             }
 
-            //抛出异常
+            Exception e = new Exception("Can't change: can't find the order!");
+            throw e;
         }
 
         public Order FindOrder(String id)
@@ -69,8 +73,8 @@ namespace OrderManageSystem
                 }
             }
 
-            return null;
-            //抛出异常
+            Exception e = new Exception("Can't find the order!");
+            throw e;
         }
 
 
@@ -120,8 +124,6 @@ namespace OrderManageSystem
 
             //没找到的情况？
         }
-
-        //----------------------排序功能----------------------
 
 
         //----------------------打印所有订单----------------------

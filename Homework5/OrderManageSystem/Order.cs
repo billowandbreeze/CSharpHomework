@@ -46,7 +46,7 @@ namespace OrderManageSystem
         }
 
         //----------------------更新订单总价格----------------------
-        private void UpdateTotalPrize()
+        public void UpdateTotalPrize()
         {
             totalPrize = 0;
             foreach (OrderDetails o in details)
@@ -58,8 +58,7 @@ namespace OrderManageSystem
         //----------------------订单明细的增删改查----------------------
         public void AddDetails(OrderDetails orderDetails)
         {
-            //有问题，不一定是增加一个num
-            //如果已经存在相同物品，则在OrderDetails中增加一个
+            //如果已经存在相同物品，则直接修改订单明细
             foreach (OrderDetails o in details)
             {
                 if (o.Equals(orderDetails))
@@ -86,7 +85,8 @@ namespace OrderManageSystem
                 }
             }
 
-            //抛出异常
+            Exception e = new Exception("Can't remove: can't find order details!");
+            throw e;
         }
 
         public void ChangeDetails(OrderDetails orderDetails, Good goods, int num)
@@ -102,7 +102,8 @@ namespace OrderManageSystem
                 }
             }
 
-            //抛出异常
+            Exception e = new Exception("Can't change: can't find order details!");
+            throw e;
         }
 
         public OrderDetails FindDetails(Good goods)
@@ -111,13 +112,13 @@ namespace OrderManageSystem
             {
                 if(o.Goods == goods)
                 {
-                    Console.WriteLine("Find " + goods.Name);
+                    //Console.WriteLine("Find " + goods.Name);
                     return o;
                 }
             }
 
-            //抛出异常
-            return null;
+            Exception e = new Exception("Can't find order details!");
+            throw e;
         }
 
         //----------------------打印订单----------------------

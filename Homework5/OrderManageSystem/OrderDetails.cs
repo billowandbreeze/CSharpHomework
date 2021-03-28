@@ -6,9 +6,11 @@ namespace OrderManageSystem
 {
     class OrderDetails
     {
+        //----------------------字段----------------------
         private Good goods;
         private int num;
 
+        //----------------------属性----------------------
         public Good Goods
         {
             set => goods = value;
@@ -21,20 +23,31 @@ namespace OrderManageSystem
             get => num;
         }
 
+        //----------------------构造器----------------------
         public OrderDetails(Good goods, int num)
         {
             this.goods = goods;
             this.num = num;
         }
 
+        //----------------------计算价格----------------------
         public double GetTotalPrize()
         {
             return goods.Prize * num;
         }
 
+        //----------------------重写方法----------------------
         public override string ToString()
         {
             return goods.ToString() + "\nNumber: " + num;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is OrderDetails details &&
+                   goods.Name == details.goods.Name &&
+                   goods.Prize == details.goods.Prize &&
+                   num == details.num;
         }
     }
 }

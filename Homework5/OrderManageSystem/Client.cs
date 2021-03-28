@@ -6,15 +6,22 @@ namespace OrderManageSystem
 {
     class Client
     {
+        private String name;
+
         public String Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
+        }
+
+        public Client(String name)
+        {
+            this.name = name;
         }
 
         public override string ToString()
         {
-            return "Client Name :" + Name;
+            return "Client Name :" + name;
         }
     }
 }

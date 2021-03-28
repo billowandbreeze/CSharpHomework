@@ -6,12 +6,14 @@ namespace OrderManageSystem
 {
     class Order
     {
+        //----------------------字段----------------------
         private String id;
         private Client client;
         private double totalPrize;
+        private List<OrderDetails> details;
 
-        private List<OrderDetails> details = new List<OrderDetails>();
 
+        //----------------------属性----------------------
         public String ID
         {
             set => id = value;
@@ -26,16 +28,7 @@ namespace OrderManageSystem
 
         public double TotalPrize
         {
-            get
-            {
-                totalPrize = 0;
-                foreach(OrderDetails o in details)
-                {
-                    totalPrize += o.GetTotalPrize();
-                }
-
-                return totalPrize;
-            }
+            get => totalPrize;
         }
 
         public List<OrderDetails> Details
@@ -43,19 +36,42 @@ namespace OrderManageSystem
             get => details;
         }
 
+        //----------------------构造器----------------------
+        public Order(String id, Client client)
+        {
+            this.id = id;
+            this.client = client;
+            totalPrize = 0;
+            details = new List<OrderDetails>();
+        }
+
+        //----------------------更新订单总价格----------------------
+        private void UpdateTotalPrize()
+        {
+            totalPrize = 0;
+            foreach (OrderDetails o in details)
+            {
+                totalPrize += o.GetTotalPrize();
+            }
+        }
+
+        //----------------------订单明细的增删改查----------------------
         public void AddDetails(OrderDetails orderDetails)
         {
+            //有问题，不一定是增加一个num
             //如果已经存在相同物品，则在OrderDetails中增加一个
             foreach (OrderDetails o in details)
             {
-                if (o.Goods == orderDetails.Goods)
+                if (o.Equals(orderDetails))
                 {
-                    o.Num += 1;
+                    o.Num = 2 * o.Num;
+                    UpdateTotalPrize();
                     return;
                 }
             }
 
             details.Add(orderDetails);
+            UpdateTotalPrize();
         }
 
         public void RemoveDetails(OrderDetails orderDetails)
@@ -65,6 +81,7 @@ namespace OrderManageSystem
                 if(o == orderDetails)
                 {
                     details.Remove(o);
+                    UpdateTotalPrize();
                     return;
                 }
             }
@@ -80,6 +97,7 @@ namespace OrderManageSystem
                 {
                     o.Goods = goods;
                     o.Num = num;
+                    UpdateTotalPrize();
                     return;
                 }
             }
@@ -102,12 +120,28 @@ namespace OrderManageSystem
             return null;
         }
 
+        //----------------------打印订单----------------------
         public void ShowDetails()
         {
-            foreach(OrderDetails o in details)
+            Console.WriteLine("ID: " + id);
+            Console.WriteLine(client);
+            Console.WriteLine("Total Prize: " + totalPrize);
+
+            foreach (OrderDetails o in details)
             {
                 Console.WriteLine(o.ToString());
             }
+        }
+
+
+        //----------------------重写方法----------------------
+        public override bool Equals(object obj)
+        {
+            return obj is Order order &&
+                   client == order.client &&
+                   id == order.id &&
+                   totalPrize == order.totalPrize &&
+                   EqualityComparer<List<OrderDetails>>.Default.Equals(details, order.details);
         }
     }
 }

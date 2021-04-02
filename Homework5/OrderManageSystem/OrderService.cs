@@ -16,6 +16,20 @@ namespace OrderManageSystem
             get => orders;
         }
 
+        //----------------------找订单的工具----------------------
+        private Order FindOrderTool(Order order)
+        {
+            foreach(Order o in orders)
+            {
+                if(o == order)
+                {
+                    return o;
+                }
+            }
+
+            return null;
+        }
+
         //----------------------订单的增删改查----------------------
         public void AddOrder(Order order)
         {
@@ -34,33 +48,29 @@ namespace OrderManageSystem
 
         public void RemoveOrder(Order order)
         {
-            foreach (Order o in orders)
+            if(FindOrderTool(order) != null)
             {
-                if (o == order)
-                {
-                    orders.Remove(o);
-                    return;
-                }
+                orders.Remove(FindOrderTool(order));
             }
-
-            Exception e = new Exception("Can't remove: can't find the order!");
-            throw e;
+            else
+            {
+                Exception e = new Exception("Can't remove: can't find the order!");
+                throw e;
+            }
         }
 
-        public void ChangeOrder(Order order, String id, Client client)
+        public void ChangeOrder(Order oldOrder, Order newOrder)
         {
-            foreach (Order o in orders)
+            if (FindOrderTool(oldOrder) != null)
             {
-                if (o == order)
-                {
-                    o.ID = id;
-                    o.Client = client;
-                    return;
-                }
+                orders.Remove(FindOrderTool(oldOrder));
+                AddOrder(newOrder);
             }
-
-            Exception e = new Exception("Can't change: can't find the order!");
-            throw e;
+            else
+            {
+                Exception e = new Exception("Can't change: can't find the order!");
+                throw e;
+            }
         }
 
         public Order FindOrder(String id)
@@ -85,12 +95,10 @@ namespace OrderManageSystem
                         where o.ID == id
                         select o;
 
-            foreach(var x in order)
+            foreach (var x in order)
             {
-                x.ShowDetails();
+                Console.WriteLine(x);
             }
-
-            //没找到的情况？
         }
 
         public void FindOrderByClient(Client client)
@@ -102,11 +110,8 @@ namespace OrderManageSystem
 
             foreach (var x in order)
             {
-                x.ShowDetails();
-                Console.WriteLine();
+                Console.WriteLine(x);
             }
-
-            //没找到的情况？
         }
 
         public void FindOrderByPrize(int prize)
@@ -118,22 +123,38 @@ namespace OrderManageSystem
 
             foreach (var x in order)
             {
-                x.ShowDetails();
-                Console.WriteLine();
+                Console.WriteLine(x);
             }
-
-            //没找到的情况？
         }
 
-
-        //----------------------打印所有订单----------------------
-        public void ShowOrder()
+        //----------------------重写方法----------------------
+        public override string ToString()
         {
-            foreach(Order o in orders)
+            String res = "";
+
+            foreach (Order o in orders)
             {
-                o.ShowDetails();
-                Console.WriteLine();
+                res += o.ToString();
+                res += "\n";
             }
+
+            return res;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+
+            return obj is OrderService service &&
+                   EqualityComparer<List<Order>>.Default.Equals(orders, service.orders);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

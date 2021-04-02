@@ -28,7 +28,16 @@ namespace OrderManageSystem
 
         public double TotalPrize
         {
-            get => totalPrize;
+            get
+            {
+                totalPrize = 0;
+                foreach (OrderDetails o in details)
+                {
+                    totalPrize += o.Prize;
+                }
+
+                return totalPrize;
+            }
         }
 
         public List<OrderDetails> Details
@@ -45,74 +54,83 @@ namespace OrderManageSystem
             details = new List<OrderDetails>();
         }
 
-        //----------------------更新订单总价格----------------------
-        public void UpdateTotalPrize()
+
+        //----------------------找到订单的工具----------------------
+        private OrderDetails AddOrderTool(Good good)
         {
-            totalPrize = 0;
             foreach (OrderDetails o in details)
             {
-                totalPrize += o.GetTotalPrize();
+                if (o.Goods == good)
+                {
+                    return o;
+                }
             }
+
+            return null;
         }
+
+        private OrderDetails FindOrderTool(OrderDetails orderDetails)
+        {
+            foreach(OrderDetails o in details)
+            {
+                if(o == orderDetails)
+                {
+                    return o;
+                }
+            }
+
+            return null;
+        }
+
 
         //----------------------订单明细的增删改查----------------------
         public void AddDetails(OrderDetails orderDetails)
         {
-            //如果已经存在相同物品，则直接修改订单明细
-            foreach (OrderDetails o in details)
+            if(AddOrderTool(orderDetails.Goods) != null)
             {
-                if (o.Equals(orderDetails))
-                {
-                    o.Num = 2 * o.Num;
-                    UpdateTotalPrize();
-                    return;
-                }
+                AddOrderTool(orderDetails.Goods).Num += orderDetails.Num;
             }
-
-            details.Add(orderDetails);
-            UpdateTotalPrize();
+            else
+            {
+                details.Add(orderDetails);
+            }
         }
+
 
         public void RemoveDetails(OrderDetails orderDetails)
         {
-            foreach (OrderDetails o in details)
+            if(FindOrderTool(orderDetails) != null)
             {
-                if(o == orderDetails)
-                {
-                    details.Remove(o);
-                    UpdateTotalPrize();
-                    return;
-                }
+                details.Remove(FindOrderTool(orderDetails));
             }
-
-            Exception e = new Exception("Can't remove: can't find order details!");
-            throw e;
+            else
+            {
+                Exception e = new Exception("Can't remove: can't find order details!");
+                throw e;
+            }
         }
 
-        public void ChangeDetails(OrderDetails orderDetails, Good goods, int num)
+
+        public void ChangeDetails(OrderDetails oldOrderDetails, OrderDetails newOrderDetails)
         {
-            foreach (OrderDetails o in details)
+            if(FindOrderTool(oldOrderDetails) != null)
             {
-                if (o == orderDetails)
-                {
-                    o.Goods = goods;
-                    o.Num = num;
-                    UpdateTotalPrize();
-                    return;
-                }
+                details.Remove(FindOrderTool(oldOrderDetails));
+                AddDetails(newOrderDetails);
             }
-
-            Exception e = new Exception("Can't change: can't find order details!");
-            throw e;
+            else
+            {
+                Exception e = new Exception("Can't change: can't find order details!");
+                throw e;
+            }
         }
 
-        public OrderDetails FindDetails(Good goods)
+        public OrderDetails FindDetails(Good goods, int num)
         {
             foreach(OrderDetails o in details)
             {
-                if(o.Goods == goods)
+                if(o.Goods == goods && o.Num == num)
                 {
-                    //Console.WriteLine("Find " + goods.Name);
                     return o;
                 }
             }
@@ -121,28 +139,33 @@ namespace OrderManageSystem
             throw e;
         }
 
-        //----------------------打印订单----------------------
-        public void ShowDetails()
-        {
-            Console.WriteLine("ID: " + id);
-            Console.WriteLine(client);
-            Console.WriteLine("Total Prize: " + totalPrize);
-
-            foreach (OrderDetails o in details)
-            {
-                Console.WriteLine(o.ToString());
-            }
-        }
-
 
         //----------------------重写方法----------------------
         public override bool Equals(object obj)
         {
+            if(obj == null)
+            {
+                return false;
+            }
+
             return obj is Order order &&
-                   client == order.client &&
-                   id == order.id &&
-                   totalPrize == order.totalPrize &&
-                   EqualityComparer<List<OrderDetails>>.Default.Equals(details, order.details);
+                   id == order.id;
+        }
+
+        public override string ToString()
+        {
+            String res = "ID: " + id + "\n" + client + "\n";
+
+
+            foreach(OrderDetails o in details)
+            {
+                res += o.ToString();
+                res += "\n";
+            }
+
+            res += "Total Prize: " + TotalPrize + "\n";
+
+            return res;
         }
     }
 }

@@ -23,17 +23,24 @@ namespace OrderManageSystem
             get => num;
         }
 
+        public double Prize
+        {
+            get
+            {
+                return goods.Prize * num;
+            }
+        }
+
         //----------------------构造器----------------------
+        public OrderDetails()
+        {
+
+        }
+
         public OrderDetails(Good goods, int num)
         {
             this.goods = goods;
             this.num = num;
-        }
-
-        //----------------------计算价格----------------------
-        public double GetTotalPrize()
-        {
-            return goods.Prize * num;
         }
 
         //----------------------重写方法----------------------
@@ -44,10 +51,20 @@ namespace OrderManageSystem
 
         public override bool Equals(object obj)
         {
+            if(obj == null)
+            {
+                return false;
+            }
+
             return obj is OrderDetails details &&
                    goods.Name == details.goods.Name &&
                    goods.Prize == details.goods.Prize &&
                    num == details.num;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Goods, Num, Prize);
         }
     }
 }

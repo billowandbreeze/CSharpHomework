@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManageSystem", "OrderManageSystem.csproj", "{0472276F-38FC-40C4-8876-3AA6476960CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManageSystem", "OrderManageSystem.csproj", "{0472276F-38FC-40C4-8876-3AA6476960CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderServerTest", "..\OrderServerTest\OrderServerTest.csproj", "{C47ED87E-A46B-4FB8-B3BA-95AEBDF0EB55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0472276F-38FC-40C4-8876-3AA6476960CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0472276F-38FC-40C4-8876-3AA6476960CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0472276F-38FC-40C4-8876-3AA6476960CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C47ED87E-A46B-4FB8-B3BA-95AEBDF0EB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C47ED87E-A46B-4FB8-B3BA-95AEBDF0EB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C47ED87E-A46B-4FB8-B3BA-95AEBDF0EB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C47ED87E-A46B-4FB8-B3BA-95AEBDF0EB55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

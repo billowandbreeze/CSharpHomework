@@ -62,7 +62,7 @@ namespace OrderManageSystem
             orderService.AddOrder(order2);
             orderService.AddOrder(order3);
 
-            
+            /*
             Console.WriteLine("---------按订单号升序排序功能---------");
             orderService.Orders.Sort((o1, o2) => int.Parse(o1.ID) - int.Parse(o2.ID));
             Console.WriteLine(orderService);
@@ -78,6 +78,7 @@ namespace OrderManageSystem
             Console.WriteLine("---------按价格降序排序功能---------");
             orderService.Orders.Sort((o1, o2) => (int)o2.TotalPrize - (int)o1.TotalPrize);
             Console.WriteLine(orderService);
+            */
 
             orderService.Export();
 

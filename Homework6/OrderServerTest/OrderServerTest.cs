@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using OrderManageSystem;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace OrderServerTest
 {
@@ -110,6 +112,49 @@ namespace OrderServerTest
             orderService.AddOrder(order2);
 
             Assert.AreEqual(orderService.FindOrder("0002"), order2);
+        }
+
+        [Test]
+        public void TestExport()
+        {
+            Order order1;
+            Order order2;
+            Order order3;
+
+            GetOrderService(out order1, out order2, out order3);
+
+            OrderService orderService = new OrderService();
+            orderService.AddOrder(order1);
+            orderService.AddOrder(order2);
+            orderService.Export();
+
+            FileStream fs1 = new FileStream("order.xml", FileMode.Open);
+            FileStream fs2 = new FileStream("test.xml", FileMode.Open);
+
+            Assert.AreEqual(fs1, fs2);
+        }
+
+        [Test]
+        public void TestImport()
+        {
+            Order order1;
+            Order order2;
+            Order order3;
+
+            GetOrderService(out order1, out order2, out order3);
+
+            OrderService orderService = new OrderService();
+            orderService.AddOrder(order1);
+            orderService.AddOrder(order2);
+            orderService.Export();
+
+            List<Order> o = orderService.Import();
+
+            List<Order> orderTest = new List<Order>();
+            orderTest.Add(order1);
+            orderTest.Add(order2);
+
+            Assert.AreEqual(o, orderTest);
         }
     }
 }

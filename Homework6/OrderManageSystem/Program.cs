@@ -80,13 +80,13 @@ namespace OrderManageSystem
             Console.WriteLine(orderService);
             */
 
-            orderService.Export();
+            orderService.Export("order.xml");
 
             Console.WriteLine("\nXML: ");
             Console.WriteLine(File.ReadAllText("order.xml"));
 
             Console.WriteLine("\n反序列化：");
-            foreach(Order o in orderService.Import())
+            foreach(Order o in orderService.Import("order.xml"))
             {
                 Console.WriteLine(o);
             }

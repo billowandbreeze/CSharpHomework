@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OrderManageSystem;
 using System.Xml.Serialization;
 using System.IO;
+using System;
 
 namespace OrderServerTest
 {
@@ -53,6 +54,18 @@ namespace OrderServerTest
             orderTest.Add(order2);
 
             Assert.AreEqual(orderService.orders, orderTest);
+
+            
+            try
+            {
+                orderService.AddOrder(order2);
+
+                Assert.Fail();
+            }
+            catch(Exception e)
+            {
+                Assert.AreEqual("The same order!", e.Message);
+            }
         }
 
         [Test]
@@ -75,6 +88,17 @@ namespace OrderServerTest
             orderTest.Remove(order1);
 
             Assert.AreEqual(orderService.orders, orderTest);
+
+            try
+            {
+                orderService.RemoveOrder(order1);
+
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Can't remove: can't find the order!", e.Message);
+            }
         }
 
         [Test]
@@ -96,6 +120,17 @@ namespace OrderServerTest
             orderTest.Add(order3);
 
             Assert.AreEqual(orderService.orders, orderTest);
+
+            try
+            {
+                orderService.ChangeOrder(order1, order3);
+
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Can't change: can't find the order!", e.Message);
+            }
         }
 
         [Test]
@@ -112,6 +147,17 @@ namespace OrderServerTest
             orderService.AddOrder(order2);
 
             Assert.AreEqual(orderService.FindOrder("0002"), order2);
+
+            try
+            {
+                orderService.FindOrder("1111");
+
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Can't find the order!", e.Message);
+            }
         }
 
         [Test]
@@ -126,7 +172,7 @@ namespace OrderServerTest
             OrderService orderService = new OrderService();
             orderService.AddOrder(order1);
             orderService.AddOrder(order2);
-            orderService.Export();
+            orderService.Export("order.xml");
 
             FileStream fs1 = new FileStream("order.xml", FileMode.Open);
             FileStream fs2 = new FileStream("test.xml", FileMode.Open);
@@ -146,9 +192,9 @@ namespace OrderServerTest
             OrderService orderService = new OrderService();
             orderService.AddOrder(order1);
             orderService.AddOrder(order2);
-            orderService.Export();
+            orderService.Export("order.xml");
 
-            List<Order> o = orderService.Import();
+            List<Order> o = orderService.Import("order.xml");
 
             List<Order> orderTest = new List<Order>();
             orderTest.Add(order1);

@@ -92,42 +92,33 @@ namespace OrderManageSystem
 
 
         //----------------------各种查询功能----------------------
-        public void FindOrderById(String id)
+        public List<Order> FindOrderById(String id)
         {
             var order = from o in orders
                         where o.ID == id
                         select o;
 
-            foreach (var x in order)
-            {
-                Console.WriteLine(x);
-            }
+            return order.ToList();
         }
 
-        public void FindOrderByClient(Client client)
+        public List<Order> FindOrderByClient(Client client)
         {
             var order = from o in orders
                         where o.Client == client
                         orderby o.TotalPrize descending
                         select o;
 
-            foreach (var x in order)
-            {
-                Console.WriteLine(x);
-            }
+            return order.ToList();
         }
 
-        public void FindOrderByPrize(int prize)
+        public List<Order> FindOrderByPrize(int prize)
         {
             var order = from o in orders
                         where o.TotalPrize == prize
                         orderby o.ID
                         select o;
 
-            foreach (var x in order)
-            {
-                Console.WriteLine(x);
-            }
+            return order.ToList();
         }
 
         //----------------------重写方法----------------------
@@ -161,21 +152,21 @@ namespace OrderManageSystem
         }
 
         //----------------------序列化和反序列化----------------------
-        public void Export()
+        public void Export(String fileName)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Order>));
 
-            using (FileStream fileStream = new FileStream("order.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 xmlSerializer.Serialize(fileStream, this.orders);
             }
         }
 
-        public List<Order> Import()
+        public List<Order> Import(String fileName)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Order>));
 
-            using (FileStream fileStream = new FileStream("order.xml", FileMode.Open))
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
             {
                 List<Order> temp = (List<Order>)xmlSerializer.Deserialize(fileStream);
 

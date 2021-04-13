@@ -31,6 +31,9 @@ namespace Caylay
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -57,9 +60,6 @@ namespace Caylay
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -74,10 +74,11 @@ namespace Caylay
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 450);
+            this.panel1.Size = new System.Drawing.Size(479, 470);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -86,6 +87,7 @@ namespace Caylay
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.radioButton6);
             this.panel2.Controls.Add(this.radioButton5);
             this.panel2.Controls.Add(this.radioButton4);
@@ -103,8 +105,42 @@ namespace Caylay
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(479, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(321, 450);
+            this.panel2.Size = new System.Drawing.Size(363, 470);
             this.panel2.TabIndex = 1;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(243, 372);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(58, 19);
+            this.radioButton6.TabIndex = 20;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "红色";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(243, 336);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(58, 19);
+            this.radioButton5.TabIndex = 19;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "紫色";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(243, 299);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(58, 19);
+            this.radioButton4.TabIndex = 18;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "黄色";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -227,6 +263,7 @@ namespace Caylay
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.panel10);
             this.panel3.Controls.Add(this.panel9);
             this.panel3.Controls.Add(this.panel8);
@@ -237,7 +274,7 @@ namespace Caylay
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(122, 450);
+            this.panel3.Size = new System.Drawing.Size(122, 468);
             this.panel3.TabIndex = 8;
             // 
             // panel10
@@ -246,7 +283,7 @@ namespace Caylay
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 288);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(122, 48);
+            this.panel10.Size = new System.Drawing.Size(120, 48);
             this.panel10.TabIndex = 6;
             // 
             // label8
@@ -254,7 +291,7 @@ namespace Caylay
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 48);
+            this.label8.Size = new System.Drawing.Size(120, 48);
             this.label8.TabIndex = 0;
             this.label8.Text = "画笔颜色";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -265,7 +302,7 @@ namespace Caylay
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 240);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(122, 48);
+            this.panel9.Size = new System.Drawing.Size(120, 48);
             this.panel9.TabIndex = 5;
             // 
             // label6
@@ -273,7 +310,7 @@ namespace Caylay
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 48);
+            this.label6.Size = new System.Drawing.Size(120, 48);
             this.label6.TabIndex = 0;
             this.label6.Text = "右分支角度";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -284,7 +321,7 @@ namespace Caylay
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 192);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(122, 48);
+            this.panel8.Size = new System.Drawing.Size(120, 48);
             this.panel8.TabIndex = 4;
             // 
             // label5
@@ -292,7 +329,7 @@ namespace Caylay
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 48);
+            this.label5.Size = new System.Drawing.Size(120, 48);
             this.label5.TabIndex = 0;
             this.label5.Text = "左分支角度";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -303,7 +340,7 @@ namespace Caylay
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 144);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(122, 48);
+            this.panel7.Size = new System.Drawing.Size(120, 48);
             this.panel7.TabIndex = 3;
             // 
             // label4
@@ -311,7 +348,7 @@ namespace Caylay
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 48);
+            this.label4.Size = new System.Drawing.Size(120, 48);
             this.label4.TabIndex = 0;
             this.label4.Text = "右分支长度比";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,7 +359,7 @@ namespace Caylay
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 96);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(122, 48);
+            this.panel6.Size = new System.Drawing.Size(120, 48);
             this.panel6.TabIndex = 2;
             // 
             // label3
@@ -330,7 +367,7 @@ namespace Caylay
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 48);
+            this.label3.Size = new System.Drawing.Size(120, 48);
             this.label3.TabIndex = 0;
             this.label3.Text = "左分支长度比";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,7 +378,7 @@ namespace Caylay
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 48);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(122, 48);
+            this.panel5.Size = new System.Drawing.Size(120, 48);
             this.panel5.TabIndex = 1;
             // 
             // label2
@@ -349,7 +386,7 @@ namespace Caylay
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 48);
+            this.label2.Size = new System.Drawing.Size(120, 48);
             this.label2.TabIndex = 0;
             this.label2.Text = "主干长度";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -360,7 +397,7 @@ namespace Caylay
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(122, 48);
+            this.panel4.Size = new System.Drawing.Size(120, 48);
             this.panel4.TabIndex = 0;
             // 
             // label1
@@ -368,7 +405,7 @@ namespace Caylay
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 48);
+            this.label1.Size = new System.Drawing.Size(120, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "递归深度";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -393,45 +430,11 @@ namespace Caylay
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(243, 299);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(58, 19);
-            this.radioButton4.TabIndex = 18;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "黄色";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(243, 336);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(58, 19);
-            this.radioButton5.TabIndex = 19;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "紫色";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(243, 372);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(58, 19);
-            this.radioButton6.TabIndex = 20;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "红色";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(842, 470);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";

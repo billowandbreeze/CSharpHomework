@@ -13,14 +13,8 @@ namespace Caylay
     public partial class Form1 : Form
     {
         private Graphics graphics;
-
-        private double per1;
-        private double per2;
-
-        private double th1;
-        private double th2;
-
         private Pen penColor;
+        private Data data;
 
         public Form1()
         {
@@ -29,7 +23,14 @@ namespace Caylay
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            data = new Data();
 
+            textBox1.DataBindings.Add("Text", data, "N");
+            textBox2.DataBindings.Add("Text", data, "Leng");
+            comboBox1.DataBindings.Add("Text", data, "Per1");
+            comboBox2.DataBindings.Add("Text", data, "Per2");
+            comboBox3.DataBindings.Add("Text", data, "Th1");
+            comboBox4.DataBindings.Add("Text", data, "Th2");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -39,16 +40,6 @@ namespace Caylay
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int n = int.Parse(textBox1.Text);
-
-            double leng = double.Parse(textBox2.Text);
-
-            per1 = double.Parse(comboBox1.Text);
-            per2 = double.Parse(comboBox2.Text);
-
-            th1 = double.Parse(comboBox3.Text);
-            th2 = double.Parse(comboBox4.Text);
-
             if (radioButton1.Checked)
             {
                 penColor = Pens.Black;
@@ -75,13 +66,13 @@ namespace Caylay
             if (graphics == null)
             {
                 graphics = panel1.CreateGraphics();
-                drawCayleyTree(n, 200, 310, leng, -Math.PI / 2);
+                drawCayleyTree(data.N, 200, 310, data.Leng, -Math.PI / 2);
             }
             else
             {
                 graphics.Clear(Color.White);
                 graphics = panel1.CreateGraphics();
-                drawCayleyTree(n, 200, 310, leng, -Math.PI / 2);
+                drawCayleyTree(data.N, 200, 310, data.Leng, -Math.PI / 2);
             }
         }
 
@@ -97,8 +88,8 @@ namespace Caylay
 
             drawLine(x0, y0, x1, y1);
 
-            drawCayleyTree(n - 1, x1, y1, per1 * leng, th + th1);
-            drawCayleyTree(n - 1, x1, y1, per2 * leng, th - th2);
+            drawCayleyTree(n - 1, x1, y1, data.Per1 * leng, th + data.Th1);
+            drawCayleyTree(n - 1, x1, y1, data.Per2 * leng, th - data.Th2);
         }
 
         private void drawLine(double x0, double y0, double x1, double y1)

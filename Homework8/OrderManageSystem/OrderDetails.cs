@@ -9,6 +9,7 @@ namespace OrderManageSystem
         //----------------------字段----------------------
         private Good goods;
         private int num;
+        private double prize;
 
         //----------------------属性----------------------
         public Good Goods
@@ -27,14 +28,20 @@ namespace OrderManageSystem
         {
             get
             {
-                return goods.Prize * num;
+                prize = goods.Prize * num;
+                return prize;
+            }
+
+            set
+            {
+                prize = value;
             }
         }
 
         //----------------------构造器----------------------
         public OrderDetails()
         {
-
+            Prize = 0;
         }
 
         public OrderDetails(Good goods, int num)
@@ -60,17 +67,6 @@ namespace OrderManageSystem
                    goods.Name == details.goods.Name &&
                    goods.Prize == details.goods.Prize &&
                    num == details.num;
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = 172940711;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Good>.Default.GetHashCode(goods);
-            hashCode = hashCode * -1521134295 + num.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<Good>.Default.GetHashCode(Goods);
-            hashCode = hashCode * -1521134295 + Num.GetHashCode();
-            hashCode = hashCode * -1521134295 + Prize.GetHashCode();
-            return hashCode;
         }
     }
 }

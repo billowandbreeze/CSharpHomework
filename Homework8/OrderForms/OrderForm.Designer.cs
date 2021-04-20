@@ -40,6 +40,7 @@ namespace OrderForms
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPrizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceOrder = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrder)).BeginInit();
@@ -47,6 +48,7 @@ namespace OrderForms
             // 
             // panel
             // 
+            this.panel.Controls.Add(this.label1);
             this.panel.Controls.Add(this.buttonSearch);
             this.panel.Controls.Add(this.buttonChange);
             this.panel.Controls.Add(this.buttonDelete);
@@ -148,6 +150,15 @@ namespace OrderForms
             this.bindingSourceOrder.DataMember = "Orders";
             this.bindingSourceOrder.DataSource = typeof(OrderManageSystem.OrderService);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(255, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Click the cell to view details!";
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -159,6 +170,7 @@ namespace OrderForms
             this.Text = "Order Service";
             this.Load += new System.EventHandler(this.OrderForm_Load);
             this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrder)).EndInit();
             this.ResumeLayout(false);
@@ -177,6 +189,7 @@ namespace OrderForms
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPrizeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -146,11 +146,6 @@ namespace OrderManageSystem
                    EqualityComparer<List<Order>>.Default.Equals(orders, service.orders);
         }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
         //----------------------序列化和反序列化----------------------
         public void Export(String fileName)
         {

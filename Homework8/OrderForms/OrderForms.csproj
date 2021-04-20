@@ -120,6 +120,11 @@
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\OrderManageSystem.Client.datasource" />
+    <None Include="Properties\DataSources\OrderManageSystem.Good.datasource" />
+    <None Include="Properties\DataSources\OrderManageSystem.Order.datasource" />
+    <None Include="Properties\DataSources\OrderManageSystem.OrderDetails.datasource" />
+    <None Include="Properties\DataSources\OrderManageSystem.OrderService.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrderManageSystem\OrderManageSystem.csproj">
+      <Project>{ee69d17d-381b-46d0-abed-527ba9c91de5}</Project>
+      <Name>OrderManageSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

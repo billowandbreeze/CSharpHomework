@@ -29,14 +29,20 @@ namespace OrderForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel = new System.Windows.Forms.Panel();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.orderDataGridView = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPrizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceOrder = new System.Windows.Forms.BindingSource(this.components);
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
@@ -97,7 +103,13 @@ namespace OrderForms
             // 
             // orderDataGridView
             // 
+            this.orderDataGridView.AutoGenerateColumns = false;
             this.orderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.clientDataGridViewTextBoxColumn,
+            this.totalPrizeDataGridViewTextBoxColumn});
+            this.orderDataGridView.DataSource = this.bindingSourceOrder;
             this.orderDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderDataGridView.Location = new System.Drawing.Point(0, 100);
             this.orderDataGridView.Name = "orderDataGridView";
@@ -105,6 +117,36 @@ namespace OrderForms
             this.orderDataGridView.RowTemplate.Height = 27;
             this.orderDataGridView.Size = new System.Drawing.Size(782, 253);
             this.orderDataGridView.TabIndex = 1;
+            this.orderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderDataGridView_CellContentClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientDataGridViewTextBoxColumn
+            // 
+            this.clientDataGridViewTextBoxColumn.DataPropertyName = "Client";
+            this.clientDataGridViewTextBoxColumn.HeaderText = "Client";
+            this.clientDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientDataGridViewTextBoxColumn.Name = "clientDataGridViewTextBoxColumn";
+            this.clientDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalPrizeDataGridViewTextBoxColumn
+            // 
+            this.totalPrizeDataGridViewTextBoxColumn.DataPropertyName = "TotalPrize";
+            this.totalPrizeDataGridViewTextBoxColumn.HeaderText = "TotalPrize";
+            this.totalPrizeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalPrizeDataGridViewTextBoxColumn.Name = "totalPrizeDataGridViewTextBoxColumn";
+            this.totalPrizeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // bindingSourceOrder
+            // 
+            this.bindingSourceOrder.DataMember = "Orders";
+            this.bindingSourceOrder.DataSource = typeof(OrderManageSystem.OrderService);
             // 
             // OrderForm
             // 
@@ -115,8 +157,10 @@ namespace OrderForms
             this.Controls.Add(this.panel);
             this.Name = "OrderForm";
             this.Text = "Order Service";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,6 +173,10 @@ namespace OrderForms
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.BindingSource bindingSourceOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPrizeDataGridViewTextBoxColumn;
     }
 }
 

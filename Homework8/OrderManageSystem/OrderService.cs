@@ -101,10 +101,10 @@ namespace OrderManageSystem
             return order.ToList();
         }
 
-        public List<Order> FindOrderByClient(Client client)
+        public List<Order> FindOrderByClient(String name)
         {
             var order = from o in orders
-                        where o.Client == client
+                        where o.Client.Name == name
                         orderby o.TotalPrize descending
                         select o;
 

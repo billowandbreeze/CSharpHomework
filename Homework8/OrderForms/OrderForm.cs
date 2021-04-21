@@ -82,25 +82,25 @@ namespace OrderForms
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
+            AddForm addForm = new AddForm(orderService);
             addForm.Show();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeleteForm deleteForm = new DeleteForm(); ;
+            DeleteForm deleteForm = new DeleteForm(orderService); ;
             deleteForm.Show();
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            ChangeForm changeForm = new ChangeForm();
+            ChangeForm changeForm = new ChangeForm(orderService);
             changeForm.Show();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            SearchForm searchForm = new SearchForm();
+            SearchForm searchForm = new SearchForm(orderService);
             searchForm.Show();
         }
 

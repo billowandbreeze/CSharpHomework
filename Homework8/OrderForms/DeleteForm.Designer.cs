@@ -53,6 +53,7 @@ namespace OrderForms
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // textID
             // 
@@ -72,6 +73,7 @@ namespace OrderForms
             this.Controls.Add(this.labelID);
             this.Name = "DeleteForm";
             this.Text = "DeleteForm";
+            this.Load += new System.EventHandler(this.DeleteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

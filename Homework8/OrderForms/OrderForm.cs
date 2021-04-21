@@ -27,6 +27,7 @@ namespace OrderForms
             this.orderService = orderService;
 
             //Console.WriteLine(this.orderService);
+            bindingSourceOrder.ResetBindings(true);
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace OrderForms
             orderService.AddOrder(order3);
 
             bindingSourceOrder.DataSource = orderService;
-
+            this.orderDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             //Console.WriteLine(orderService);
         }
 

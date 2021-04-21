@@ -13,6 +13,8 @@ namespace OrderForms
 {
     public partial class ChangeForm : Form
     {
+        public ToMainDelegate changeToMainDelegate;
+
         private OrderService orderService = new OrderService();
 
         private Order oldOrder = new Order();
@@ -42,14 +44,16 @@ namespace OrderForms
                 oldOrder = orderService.FindOrder(textChangeID.Text);
 
                 Client client = new Client();
-                textID.DataBindings.Add("Text", newOrder, "ID");
-                textCilent.DataBindings.Add("Text", client, "Name");
+
+                newOrder.ID = textID.Text;
+                client.Name = textCilent.Text;
 
                 newOrder.Client = client;
 
                 panel4.Visible = true;
                 panel1.Visible = false;
                 panel3.Visible = false;
+
                 MessageBox.Show("Change ID and Client successfully!");
             }
             catch (Exception ex)
@@ -65,16 +69,14 @@ namespace OrderForms
                 OrderDetails orderDetails = new OrderDetails();
                 Good good = new Good();
 
-                textName.DataBindings.Add("Text", good, "Name");
-                textPrize.DataBindings.Add("Text", good, "Prize");
-                textNum.DataBindings.Add("Text", orderDetails, "Num");
+                good.Name = textName.Text;
+                good.Prize = Double.Parse(textPrize.Text);
+                orderDetails.Num = int.Parse(textNum.Text);
+
                 orderDetails.Goods = good;
 
-                textName.DataBindings.Clear();
-                textPrize.DataBindings.Clear();
-                textNum.DataBindings.Clear();
-
                 newOrder.AddDetails(orderDetails);
+
                 MessageBox.Show("Add new order details to the new order successfully!");
             }
             catch (Exception ex)
@@ -89,10 +91,15 @@ namespace OrderForms
             {
                 orderService.ChangeOrder(oldOrder, newOrder);
 
+                changeToMainDelegate.Invoke(orderService);
+
                 MessageBox.Show("Change successfully!");
+
                 panel4.Visible = false;
                 panel1.Visible = true;
                 panel3.Visible = true;
+
+                this.Close();
             }
             catch (Exception ex)
             {

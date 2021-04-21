@@ -11,6 +11,8 @@ using OrderManageSystem;
 
 namespace OrderForms
 {
+    public delegate void ToMainDelegate(OrderService orderService);
+
     public partial class OrderForm : Form
     {
         private OrderService orderService;
@@ -18,6 +20,13 @@ namespace OrderForms
         public OrderForm()
         {
             InitializeComponent();
+        }
+
+        public void ReceiveOS(OrderService orderService)
+        {
+            this.orderService = orderService;
+
+            //Console.WriteLine(this.orderService);
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -78,23 +87,34 @@ namespace OrderForms
             orderService.AddOrder(order3);
 
             bindingSourceOrder.DataSource = orderService;
+
+            //Console.WriteLine(orderService);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm(orderService);
+
+            addForm.addToMainDelegate += ReceiveOS;
+
             addForm.Show();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeleteForm deleteForm = new DeleteForm(orderService); ;
+            DeleteForm deleteForm = new DeleteForm(orderService);
+
+            deleteForm.deleteToMainDelegate += ReceiveOS;
+
             deleteForm.Show();
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
             ChangeForm changeForm = new ChangeForm(orderService);
+
+            changeForm.changeToMainDelegate += ReceiveOS;
+
             changeForm.Show();
         }
 

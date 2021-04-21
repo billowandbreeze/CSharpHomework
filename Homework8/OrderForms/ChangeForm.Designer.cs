@@ -35,6 +35,7 @@ namespace OrderForms
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonFinish = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textNum = new System.Windows.Forms.TextBox();
             this.textPrize = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@ namespace OrderForms
             this.textID = new System.Windows.Forms.TextBox();
             this.labelClient = new System.Windows.Forms.Label();
             this.labelI = new System.Windows.Forms.Label();
-            this.buttonFinish = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -120,8 +120,20 @@ namespace OrderForms
             this.panel4.TabIndex = 1;
             this.panel4.Visible = false;
             // 
+            // buttonFinish
+            // 
+            this.buttonFinish.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonFinish.Location = new System.Drawing.Point(167, 309);
+            this.buttonFinish.Name = "buttonFinish";
+            this.buttonFinish.Size = new System.Drawing.Size(75, 23);
+            this.buttonFinish.TabIndex = 7;
+            this.buttonFinish.Text = "Finish";
+            this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
+            // 
             // buttonAdd
             // 
+            this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonAdd.Location = new System.Drawing.Point(167, 260);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
@@ -132,6 +144,7 @@ namespace OrderForms
             // 
             // textNum
             // 
+            this.textNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textNum.Location = new System.Drawing.Point(211, 204);
             this.textNum.Name = "textNum";
             this.textNum.Size = new System.Drawing.Size(100, 25);
@@ -139,6 +152,7 @@ namespace OrderForms
             // 
             // textPrize
             // 
+            this.textPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textPrize.Location = new System.Drawing.Point(211, 122);
             this.textPrize.Name = "textPrize";
             this.textPrize.Size = new System.Drawing.Size(100, 25);
@@ -146,6 +160,7 @@ namespace OrderForms
             // 
             // textName
             // 
+            this.textName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textName.Location = new System.Drawing.Point(211, 40);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(100, 25);
@@ -153,6 +168,7 @@ namespace OrderForms
             // 
             // labelNum
             // 
+            this.labelNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNum.AutoSize = true;
             this.labelNum.Location = new System.Drawing.Point(82, 214);
             this.labelNum.Name = "labelNum";
@@ -162,6 +178,7 @@ namespace OrderForms
             // 
             // labelPrize
             // 
+            this.labelPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelPrize.AutoSize = true;
             this.labelPrize.Location = new System.Drawing.Point(82, 132);
             this.labelPrize.Name = "labelPrize";
@@ -171,6 +188,7 @@ namespace OrderForms
             // 
             // labelName
             // 
+            this.labelName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(82, 50);
             this.labelName.Name = "labelName";
@@ -193,6 +211,7 @@ namespace OrderForms
             // 
             // textCilent
             // 
+            this.textCilent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textCilent.Location = new System.Drawing.Point(235, 204);
             this.textCilent.Name = "textCilent";
             this.textCilent.Size = new System.Drawing.Size(100, 25);
@@ -200,6 +219,7 @@ namespace OrderForms
             // 
             // textID
             // 
+            this.textID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textID.Location = new System.Drawing.Point(235, 93);
             this.textID.Name = "textID";
             this.textID.Size = new System.Drawing.Size(100, 25);
@@ -207,6 +227,7 @@ namespace OrderForms
             // 
             // labelClient
             // 
+            this.labelClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelClient.AutoSize = true;
             this.labelClient.Location = new System.Drawing.Point(86, 204);
             this.labelClient.Name = "labelClient";
@@ -216,22 +237,13 @@ namespace OrderForms
             // 
             // labelI
             // 
+            this.labelI.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelI.AutoSize = true;
             this.labelI.Location = new System.Drawing.Point(86, 93);
             this.labelI.Name = "labelI";
             this.labelI.Size = new System.Drawing.Size(55, 15);
             this.labelI.TabIndex = 0;
             this.labelI.Text = "New ID";
-            // 
-            // buttonFinish
-            // 
-            this.buttonFinish.Location = new System.Drawing.Point(167, 309);
-            this.buttonFinish.Name = "buttonFinish";
-            this.buttonFinish.Size = new System.Drawing.Size(75, 23);
-            this.buttonFinish.TabIndex = 7;
-            this.buttonFinish.Text = "Finish";
-            this.buttonFinish.UseVisualStyleBackColor = true;
-            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
             // 
             // ChangeForm
             // 

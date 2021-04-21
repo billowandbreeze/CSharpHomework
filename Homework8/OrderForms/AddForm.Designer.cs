@@ -43,6 +43,7 @@ namespace OrderForms
             this.textName = new System.Windows.Forms.TextBox();
             this.labelPrize = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
+            this.buttonFinished = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +110,7 @@ namespace OrderForms
             // 
             // panelDetail
             // 
+            this.panelDetail.Controls.Add(this.buttonFinished);
             this.panelDetail.Controls.Add(this.buttonAdd);
             this.panelDetail.Controls.Add(this.textNum);
             this.panelDetail.Controls.Add(this.labelNum);
@@ -126,7 +128,7 @@ namespace OrderForms
             // buttonAdd
             // 
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonAdd.Location = new System.Drawing.Point(346, 200);
+            this.buttonAdd.Location = new System.Drawing.Point(346, 172);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 11;
@@ -188,6 +190,16 @@ namespace OrderForms
             this.labelName.TabIndex = 4;
             this.labelName.Text = "Name";
             // 
+            // buttonFinished
+            // 
+            this.buttonFinished.Location = new System.Drawing.Point(346, 216);
+            this.buttonFinished.Name = "buttonFinished";
+            this.buttonFinished.Size = new System.Drawing.Size(75, 23);
+            this.buttonFinished.TabIndex = 12;
+            this.buttonFinished.Text = "Finish";
+            this.buttonFinished.UseVisualStyleBackColor = true;
+            this.buttonFinished.Click += new System.EventHandler(this.buttonFinished_Click);
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -222,5 +234,6 @@ namespace OrderForms
         private System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Button buttonFinished;
     }
 }

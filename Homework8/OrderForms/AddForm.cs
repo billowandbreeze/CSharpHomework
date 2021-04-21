@@ -13,6 +13,8 @@ namespace OrderForms
 {
     public partial class AddForm : Form
     {
+        public ToMainDelegate addToMainDelegate;
+
         private OrderService orderService = new OrderService();
 
         private Client client = new Client();
@@ -42,11 +44,9 @@ namespace OrderForms
             try
             {
                 order.Client = client;
-                orderService.AddOrder(order);
 
                 panelDetail.Visible = true;
                 buttonCreate.Visible = false;
-                MessageBox.Show("Add successfully!");
             }
             catch (Exception ex)
             {
@@ -61,17 +61,36 @@ namespace OrderForms
                 Good good = new Good();
                 OrderDetails orderDetails = new OrderDetails();
 
-                textName.DataBindings.Add("Text", good, "Name");
-                textPrize.DataBindings.Add("Text", good, "Prize");
-                textNum.DataBindings.Add("Text", orderDetails, "Num");
+                good.Name = textName.Text;
+                good.Prize = Double.Parse(textPrize.Text);
+                orderDetails.Num = int.Parse(textNum.Text);
 
                 orderDetails.Goods = good;
                 order.AddDetails(orderDetails);
 
-                textName.DataBindings.Clear();
-                textPrize.DataBindings.Clear();
-                textNum.DataBindings.Clear();
-                MessageBox.Show("Add successfully!");
+                //Console.WriteLine(orderService);
+
+                MessageBox.Show("Add details successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonFinished_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                orderService.AddOrder(order);
+
+                //Console.WriteLine(orderService);
+
+                addToMainDelegate.Invoke(this.orderService);
+
+                MessageBox.Show("Add order successfully!");
+
+                this.Close();
             }
             catch (Exception ex)
             {

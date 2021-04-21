@@ -13,6 +13,8 @@ namespace OrderForms
 {
     public partial class DeleteForm : Form
     {
+        public ToMainDelegate deleteToMainDelegate;
+
         private OrderService orderService = new OrderService();
 
         private Order order = new Order();
@@ -41,7 +43,11 @@ namespace OrderForms
 
                 orderService.RemoveOrder(order);
 
+                deleteToMainDelegate.Invoke(orderService);
+
                 MessageBox.Show("Delete successfully!");
+
+                this.Close();
             }
             catch(Exception ex)
             {

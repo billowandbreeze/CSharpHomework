@@ -72,5 +72,10 @@ namespace OrderForms
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void SearchForm_Load(object sender, EventArgs e)
+        {
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+        }
     }
 }

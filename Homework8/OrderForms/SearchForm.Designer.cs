@@ -38,10 +38,10 @@ namespace OrderForms
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPrizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -133,11 +133,6 @@ namespace OrderForms
             this.dataGridView1.Size = new System.Drawing.Size(800, 350);
             this.dataGridView1.TabIndex = 7;
             // 
-            // bindingSource
-            // 
-            this.bindingSource.DataMember = "Orders";
-            this.bindingSource.DataSource = typeof(OrderManageSystem.OrderService);
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -162,6 +157,11 @@ namespace OrderForms
             this.totalPrizeDataGridViewTextBoxColumn.Name = "totalPrizeDataGridViewTextBoxColumn";
             this.totalPrizeDataGridViewTextBoxColumn.Width = 125;
             // 
+            // bindingSource
+            // 
+            this.bindingSource.DataMember = "Orders";
+            this.bindingSource.DataSource = typeof(OrderManageSystem.OrderService);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -171,6 +171,7 @@ namespace OrderForms
             this.Controls.Add(this.panel1);
             this.Name = "SearchForm";
             this.Text = "SearchForm";
+            this.Load += new System.EventHandler(this.SearchForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

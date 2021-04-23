@@ -48,10 +48,12 @@ namespace OrderForms
             this.textID = new System.Windows.Forms.TextBox();
             this.labelClient = new System.Windows.Forms.Label();
             this.labelI = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textChangeID
@@ -66,7 +68,7 @@ namespace OrderForms
             // 
             this.labelChangeID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelChangeID.AutoSize = true;
-            this.labelChangeID.Location = new System.Drawing.Point(248, 44);
+            this.labelChangeID.Location = new System.Drawing.Point(288, 37);
             this.labelChangeID.Name = "labelChangeID";
             this.labelChangeID.Size = new System.Drawing.Size(23, 15);
             this.labelChangeID.TabIndex = 1;
@@ -75,7 +77,7 @@ namespace OrderForms
             // buttonChange
             // 
             this.buttonChange.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonChange.Location = new System.Drawing.Point(154, 296);
+            this.buttonChange.Location = new System.Drawing.Point(357, 260);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(75, 23);
             this.buttonChange.TabIndex = 2;
@@ -95,8 +97,7 @@ namespace OrderForms
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
@@ -113,17 +114,17 @@ namespace OrderForms
             this.panel4.Controls.Add(this.labelNum);
             this.panel4.Controls.Add(this.labelPrize);
             this.panel4.Controls.Add(this.labelName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(379, 0);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(421, 350);
+            this.panel4.Size = new System.Drawing.Size(800, 350);
             this.panel4.TabIndex = 1;
             this.panel4.Visible = false;
             // 
             // buttonFinish
             // 
             this.buttonFinish.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonFinish.Location = new System.Drawing.Point(167, 309);
+            this.buttonFinish.Location = new System.Drawing.Point(357, 309);
             this.buttonFinish.Name = "buttonFinish";
             this.buttonFinish.Size = new System.Drawing.Size(75, 23);
             this.buttonFinish.TabIndex = 7;
@@ -134,7 +135,7 @@ namespace OrderForms
             // buttonAdd
             // 
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonAdd.Location = new System.Drawing.Point(167, 260);
+            this.buttonAdd.Location = new System.Drawing.Point(357, 260);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 6;
@@ -145,7 +146,7 @@ namespace OrderForms
             // textNum
             // 
             this.textNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textNum.Location = new System.Drawing.Point(211, 204);
+            this.textNum.Location = new System.Drawing.Point(401, 204);
             this.textNum.Name = "textNum";
             this.textNum.Size = new System.Drawing.Size(100, 25);
             this.textNum.TabIndex = 5;
@@ -153,7 +154,7 @@ namespace OrderForms
             // textPrize
             // 
             this.textPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textPrize.Location = new System.Drawing.Point(211, 122);
+            this.textPrize.Location = new System.Drawing.Point(401, 122);
             this.textPrize.Name = "textPrize";
             this.textPrize.Size = new System.Drawing.Size(100, 25);
             this.textPrize.TabIndex = 4;
@@ -161,7 +162,7 @@ namespace OrderForms
             // textName
             // 
             this.textName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textName.Location = new System.Drawing.Point(211, 40);
+            this.textName.Location = new System.Drawing.Point(401, 40);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(100, 25);
             this.textName.TabIndex = 3;
@@ -170,7 +171,7 @@ namespace OrderForms
             // 
             this.labelNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNum.AutoSize = true;
-            this.labelNum.Location = new System.Drawing.Point(82, 214);
+            this.labelNum.Location = new System.Drawing.Point(272, 214);
             this.labelNum.Name = "labelNum";
             this.labelNum.Size = new System.Drawing.Size(31, 15);
             this.labelNum.TabIndex = 2;
@@ -180,7 +181,7 @@ namespace OrderForms
             // 
             this.labelPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelPrize.AutoSize = true;
-            this.labelPrize.Location = new System.Drawing.Point(82, 132);
+            this.labelPrize.Location = new System.Drawing.Point(272, 132);
             this.labelPrize.Name = "labelPrize";
             this.labelPrize.Size = new System.Drawing.Size(47, 15);
             this.labelPrize.TabIndex = 1;
@@ -190,7 +191,7 @@ namespace OrderForms
             // 
             this.labelName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(82, 50);
+            this.labelName.Location = new System.Drawing.Point(272, 50);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(39, 15);
             this.labelName.TabIndex = 0;
@@ -203,16 +204,16 @@ namespace OrderForms
             this.panel3.Controls.Add(this.textID);
             this.panel3.Controls.Add(this.labelClient);
             this.panel3.Controls.Add(this.labelI);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(379, 350);
+            this.panel3.Size = new System.Drawing.Size(800, 350);
             this.panel3.TabIndex = 0;
             // 
             // textCilent
             // 
             this.textCilent.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textCilent.Location = new System.Drawing.Point(235, 204);
+            this.textCilent.Location = new System.Drawing.Point(401, 163);
             this.textCilent.Name = "textCilent";
             this.textCilent.Size = new System.Drawing.Size(100, 25);
             this.textCilent.TabIndex = 3;
@@ -220,7 +221,7 @@ namespace OrderForms
             // textID
             // 
             this.textID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textID.Location = new System.Drawing.Point(235, 93);
+            this.textID.Location = new System.Drawing.Point(401, 62);
             this.textID.Name = "textID";
             this.textID.Size = new System.Drawing.Size(100, 25);
             this.textID.TabIndex = 2;
@@ -229,7 +230,7 @@ namespace OrderForms
             // 
             this.labelClient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelClient.AutoSize = true;
-            this.labelClient.Location = new System.Drawing.Point(86, 204);
+            this.labelClient.Location = new System.Drawing.Point(288, 166);
             this.labelClient.Name = "labelClient";
             this.labelClient.Size = new System.Drawing.Size(87, 15);
             this.labelClient.TabIndex = 1;
@@ -239,11 +240,21 @@ namespace OrderForms
             // 
             this.labelI.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelI.AutoSize = true;
-            this.labelI.Location = new System.Drawing.Point(86, 93);
+            this.labelI.Location = new System.Drawing.Point(288, 65);
             this.labelI.Name = "labelI";
             this.labelI.Size = new System.Drawing.Size(55, 15);
             this.labelI.TabIndex = 0;
             this.labelI.Text = "New ID";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel3);
+            this.panel5.Controls.Add(this.panel4);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(800, 350);
+            this.panel5.TabIndex = 2;
             // 
             // ChangeForm
             // 
@@ -262,6 +273,7 @@ namespace OrderForms
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,5 +299,6 @@ namespace OrderForms
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Button buttonFinish;
+        private System.Windows.Forms.Panel panel5;
     }
 }

@@ -46,7 +46,7 @@ namespace OrderForms
                 order.Client = client;
 
                 panelDetail.Visible = true;
-                buttonCreate.Visible = false;
+                panel1.Visible = false;
             }
             catch (Exception ex)
             {

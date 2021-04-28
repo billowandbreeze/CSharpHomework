@@ -31,16 +31,16 @@ namespace OrderForms
         {
             this.components = new System.ComponentModel.Container();
             this.panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.orderDataGridView = new System.Windows.Forms.DataGridView();
+            this.bindingSourceOrder = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPrizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceOrder = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrder)).BeginInit();
@@ -59,14 +59,23 @@ namespace OrderForms
             this.panel.Size = new System.Drawing.Size(782, 100);
             this.panel.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(217, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "点击订单所在行查看详细信息！";
+            // 
             // buttonSearch
             // 
             this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonSearch.Location = new System.Drawing.Point(586, 48);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(100, 30);
             this.buttonSearch.TabIndex = 3;
-            this.buttonSearch.Text = "Search";
+            this.buttonSearch.Text = "查询订单";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
@@ -75,9 +84,9 @@ namespace OrderForms
             this.buttonChange.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonChange.Location = new System.Drawing.Point(413, 48);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(75, 23);
+            this.buttonChange.Size = new System.Drawing.Size(100, 30);
             this.buttonChange.TabIndex = 2;
-            this.buttonChange.Text = "Change";
+            this.buttonChange.Text = "修改订单";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
@@ -86,9 +95,9 @@ namespace OrderForms
             this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonDelete.Location = new System.Drawing.Point(248, 48);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(100, 30);
             this.buttonDelete.TabIndex = 1;
-            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.Text = "删除订单";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
@@ -97,9 +106,9 @@ namespace OrderForms
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonAdd.Location = new System.Drawing.Point(87, 48);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(100, 30);
             this.buttonAdd.TabIndex = 0;
-            this.buttonAdd.Text = "Add";
+            this.buttonAdd.Text = "增加订单";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -121,6 +130,11 @@ namespace OrderForms
             this.orderDataGridView.TabIndex = 1;
             this.orderDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderDataGridView_CellContentClick);
             // 
+            // bindingSourceOrder
+            // 
+            this.bindingSourceOrder.DataMember = "Orders";
+            this.bindingSourceOrder.DataSource = typeof(OrderManageSystem.OrderService);
+            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -132,7 +146,7 @@ namespace OrderForms
             // clientDataGridViewTextBoxColumn
             // 
             this.clientDataGridViewTextBoxColumn.DataPropertyName = "Client";
-            this.clientDataGridViewTextBoxColumn.HeaderText = "Client";
+            this.clientDataGridViewTextBoxColumn.HeaderText = "客户";
             this.clientDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientDataGridViewTextBoxColumn.Name = "clientDataGridViewTextBoxColumn";
             this.clientDataGridViewTextBoxColumn.Width = 125;
@@ -140,24 +154,10 @@ namespace OrderForms
             // totalPrizeDataGridViewTextBoxColumn
             // 
             this.totalPrizeDataGridViewTextBoxColumn.DataPropertyName = "TotalPrize";
-            this.totalPrizeDataGridViewTextBoxColumn.HeaderText = "TotalPrize";
+            this.totalPrizeDataGridViewTextBoxColumn.HeaderText = "总价";
             this.totalPrizeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalPrizeDataGridViewTextBoxColumn.Name = "totalPrizeDataGridViewTextBoxColumn";
             this.totalPrizeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // bindingSourceOrder
-            // 
-            this.bindingSourceOrder.DataMember = "Orders";
-            this.bindingSourceOrder.DataSource = typeof(OrderManageSystem.OrderService);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Click the cell to view details!";
             // 
             // OrderForm
             // 
@@ -186,10 +186,10 @@ namespace OrderForms
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.BindingSource bindingSourceOrder;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPrizeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label1;
     }
 }
 

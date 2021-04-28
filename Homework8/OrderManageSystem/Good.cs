@@ -34,7 +34,7 @@ namespace OrderManageSystem
 
         public override string ToString()
         {
-            return name + "(" + prize + " yuan)";
+            return name + "(" + prize + "元)";
         }
     }
 }

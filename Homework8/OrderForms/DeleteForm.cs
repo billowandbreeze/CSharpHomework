@@ -45,7 +45,7 @@ namespace OrderForms
 
                 deleteToMainDelegate.Invoke(orderService);
 
-                MessageBox.Show("Delete successfully!");
+                MessageBox.Show("删除成功!");
 
                 this.Close();
             }

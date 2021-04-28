@@ -64,7 +64,7 @@ namespace OrderForms
             // goodsDataGridViewTextBoxColumn
             // 
             this.goodsDataGridViewTextBoxColumn.DataPropertyName = "Goods";
-            this.goodsDataGridViewTextBoxColumn.HeaderText = "Goods(unit price)";
+            this.goodsDataGridViewTextBoxColumn.HeaderText = "商品名(单价)";
             this.goodsDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.goodsDataGridViewTextBoxColumn.Name = "goodsDataGridViewTextBoxColumn";
             this.goodsDataGridViewTextBoxColumn.Width = 200;
@@ -72,7 +72,7 @@ namespace OrderForms
             // numDataGridViewTextBoxColumn
             // 
             this.numDataGridViewTextBoxColumn.DataPropertyName = "Num";
-            this.numDataGridViewTextBoxColumn.HeaderText = "Num";
+            this.numDataGridViewTextBoxColumn.HeaderText = "该商品数量";
             this.numDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numDataGridViewTextBoxColumn.Name = "numDataGridViewTextBoxColumn";
             this.numDataGridViewTextBoxColumn.Width = 125;
@@ -80,7 +80,7 @@ namespace OrderForms
             // prizeDataGridViewTextBoxColumn
             // 
             this.prizeDataGridViewTextBoxColumn.DataPropertyName = "Prize";
-            this.prizeDataGridViewTextBoxColumn.HeaderText = "Prize";
+            this.prizeDataGridViewTextBoxColumn.HeaderText = "该商品总价";
             this.prizeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.prizeDataGridViewTextBoxColumn.Name = "prizeDataGridViewTextBoxColumn";
             this.prizeDataGridViewTextBoxColumn.ReadOnly = true;

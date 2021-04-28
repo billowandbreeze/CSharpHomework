@@ -52,9 +52,9 @@ namespace OrderForms
             this.labelKey.AutoSize = true;
             this.labelKey.Location = new System.Drawing.Point(33, 40);
             this.labelKey.Name = "labelKey";
-            this.labelKey.Size = new System.Drawing.Size(79, 15);
+            this.labelKey.Size = new System.Drawing.Size(67, 15);
             this.labelKey.TabIndex = 0;
-            this.labelKey.Text = "Key Words";
+            this.labelKey.Text = "查询内容";
             // 
             // textKey
             // 
@@ -67,9 +67,9 @@ namespace OrderForms
             // 
             this.buttonID.Location = new System.Drawing.Point(446, 36);
             this.buttonID.Name = "buttonID";
-            this.buttonID.Size = new System.Drawing.Size(92, 23);
+            this.buttonID.Size = new System.Drawing.Size(100, 30);
             this.buttonID.TabIndex = 2;
-            this.buttonID.Text = "BY ID";
+            this.buttonID.Text = "按ID";
             this.buttonID.UseVisualStyleBackColor = true;
             this.buttonID.Click += new System.EventHandler(this.buttonID_Click);
             // 
@@ -77,9 +77,9 @@ namespace OrderForms
             // 
             this.buttonClient.Location = new System.Drawing.Point(567, 36);
             this.buttonClient.Name = "buttonClient";
-            this.buttonClient.Size = new System.Drawing.Size(104, 23);
+            this.buttonClient.Size = new System.Drawing.Size(100, 30);
             this.buttonClient.TabIndex = 3;
-            this.buttonClient.Text = "By Client";
+            this.buttonClient.Text = "按客户";
             this.buttonClient.UseVisualStyleBackColor = true;
             this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
@@ -87,9 +87,9 @@ namespace OrderForms
             // 
             this.buttonPrize.Location = new System.Drawing.Point(691, 37);
             this.buttonPrize.Name = "buttonPrize";
-            this.buttonPrize.Size = new System.Drawing.Size(97, 23);
+            this.buttonPrize.Size = new System.Drawing.Size(100, 30);
             this.buttonPrize.TabIndex = 4;
-            this.buttonPrize.Text = "By Prize";
+            this.buttonPrize.Text = "按总价小于";
             this.buttonPrize.UseVisualStyleBackColor = true;
             this.buttonPrize.Click += new System.EventHandler(this.buttonPrize_Click);
             // 
@@ -98,9 +98,9 @@ namespace OrderForms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(301, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 15);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Search BY...";
+            this.label1.Text = "查询方式";
             // 
             // panel1
             // 
@@ -144,7 +144,7 @@ namespace OrderForms
             // clientDataGridViewTextBoxColumn
             // 
             this.clientDataGridViewTextBoxColumn.DataPropertyName = "Client";
-            this.clientDataGridViewTextBoxColumn.HeaderText = "Client";
+            this.clientDataGridViewTextBoxColumn.HeaderText = "客户";
             this.clientDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientDataGridViewTextBoxColumn.Name = "clientDataGridViewTextBoxColumn";
             this.clientDataGridViewTextBoxColumn.Width = 125;
@@ -152,7 +152,7 @@ namespace OrderForms
             // totalPrizeDataGridViewTextBoxColumn
             // 
             this.totalPrizeDataGridViewTextBoxColumn.DataPropertyName = "TotalPrize";
-            this.totalPrizeDataGridViewTextBoxColumn.HeaderText = "TotalPrize";
+            this.totalPrizeDataGridViewTextBoxColumn.HeaderText = "总价";
             this.totalPrizeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalPrizeDataGridViewTextBoxColumn.Name = "totalPrizeDataGridViewTextBoxColumn";
             this.totalPrizeDataGridViewTextBoxColumn.Width = 125;

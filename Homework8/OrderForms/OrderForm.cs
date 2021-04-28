@@ -33,18 +33,18 @@ namespace OrderForms
         private void OrderForm_Load(object sender, EventArgs e)
         {
             //----------------------商品----------------------
-            Good good1 = new Good("Sport Shoes", 200);
-            Good good2 = new Good("Water", 2);
-            Good good3 = new Good("Dress", 300);
-            Good good4 = new Good("Book", 39);
-            Good good5 = new Good("Smart Phone", 6000);
-            Good good6 = new Good("Computer", 10000);
+            Good good1 = new Good("运动鞋", 200);
+            Good good2 = new Good("纯净水", 2);
+            Good good3 = new Good("连衣裙", 300);
+            Good good4 = new Good("教材", 39);
+            Good good5 = new Good("智能手机", 6000);
+            Good good6 = new Good("电脑", 10000);
 
 
             //----------------------顾客----------------------
-            Client client1 = new Client("John");
-            Client client2 = new Client("Sherlock");
-            Client client3 = new Client("Molly");
+            Client client1 = new Client("夏洛克");
+            Client client2 = new Client("华生");
+            Client client3 = new Client("茉莉");
 
 
             //----------------------订单明细----------------------

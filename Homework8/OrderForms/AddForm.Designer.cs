@@ -66,9 +66,9 @@ namespace OrderForms
             this.buttonCreate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonCreate.Location = new System.Drawing.Point(332, 300);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.Size = new System.Drawing.Size(100, 30);
             this.buttonCreate.TabIndex = 4;
-            this.buttonCreate.Text = "Create";
+            this.buttonCreate.Text = "创建订单";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -94,9 +94,9 @@ namespace OrderForms
             this.labelClient.AutoSize = true;
             this.labelClient.Location = new System.Drawing.Point(260, 194);
             this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(55, 15);
+            this.labelClient.Size = new System.Drawing.Size(37, 15);
             this.labelClient.TabIndex = 1;
-            this.labelClient.Text = "Client";
+            this.labelClient.Text = "客户";
             // 
             // labelID
             // 
@@ -127,22 +127,22 @@ namespace OrderForms
             // 
             // buttonFinished
             // 
-            this.buttonFinished.Location = new System.Drawing.Point(346, 373);
+            this.buttonFinished.Location = new System.Drawing.Point(322, 372);
             this.buttonFinished.Name = "buttonFinished";
-            this.buttonFinished.Size = new System.Drawing.Size(75, 23);
+            this.buttonFinished.Size = new System.Drawing.Size(150, 30);
             this.buttonFinished.TabIndex = 12;
-            this.buttonFinished.Text = "Finish";
+            this.buttonFinished.Text = "完成添加";
             this.buttonFinished.UseVisualStyleBackColor = true;
             this.buttonFinished.Click += new System.EventHandler(this.buttonFinished_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonAdd.Location = new System.Drawing.Point(346, 314);
+            this.buttonAdd.Location = new System.Drawing.Point(322, 318);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(150, 30);
             this.buttonAdd.TabIndex = 11;
-            this.buttonAdd.Text = "Add";
+            this.buttonAdd.Text = "增加订单详细";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -160,9 +160,9 @@ namespace OrderForms
             this.labelNum.AutoSize = true;
             this.labelNum.Location = new System.Drawing.Point(284, 259);
             this.labelNum.Name = "labelNum";
-            this.labelNum.Size = new System.Drawing.Size(31, 15);
+            this.labelNum.Size = new System.Drawing.Size(67, 15);
             this.labelNum.TabIndex = 8;
-            this.labelNum.Text = "Num";
+            this.labelNum.Text = "商品数量";
             // 
             // textPrize
             // 
@@ -186,9 +186,9 @@ namespace OrderForms
             this.labelPrize.AutoSize = true;
             this.labelPrize.Location = new System.Drawing.Point(284, 163);
             this.labelPrize.Name = "labelPrize";
-            this.labelPrize.Size = new System.Drawing.Size(47, 15);
+            this.labelPrize.Size = new System.Drawing.Size(67, 15);
             this.labelPrize.TabIndex = 5;
-            this.labelPrize.Text = "Prize";
+            this.labelPrize.Text = "商品单价";
             // 
             // labelName
             // 
@@ -196,17 +196,17 @@ namespace OrderForms
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(284, 76);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(39, 15);
+            this.labelName.Size = new System.Drawing.Size(67, 15);
             this.labelName.TabIndex = 4;
-            this.labelName.Text = "Name";
+            this.labelName.Text = "商品信息";
             // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelDetail);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelDetail);
             this.Name = "AddForm";
             this.Text = "AddForm";
             this.Load += new System.EventHandler(this.AddForm_Load);

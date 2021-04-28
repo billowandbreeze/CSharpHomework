@@ -54,7 +54,7 @@ namespace OrderForms
                 panel1.Visible = false;
                 panel3.Visible = false;
 
-                MessageBox.Show("Change ID and Client successfully!");
+                MessageBox.Show("修改订单号和客户成功!");
             }
             catch (Exception ex)
             {
@@ -77,7 +77,7 @@ namespace OrderForms
 
                 newOrder.AddDetails(orderDetails);
 
-                MessageBox.Show("Add new order details to the new order successfully!");
+                MessageBox.Show("向新订单中加入订单明细成功!");
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace OrderForms
 
                 changeToMainDelegate.Invoke(orderService);
 
-                MessageBox.Show("Change successfully!");
+                MessageBox.Show("修改成功!");
 
                 panel4.Visible = false;
                 panel1.Visible = true;

@@ -114,7 +114,7 @@ namespace OrderManageSystem
         public List<Order> FindOrderByPrize(int prize)
         {
             var order = from o in orders
-                        where o.TotalPrize == prize
+                        where o.TotalPrize <= prize
                         orderby o.ID
                         select o;
 

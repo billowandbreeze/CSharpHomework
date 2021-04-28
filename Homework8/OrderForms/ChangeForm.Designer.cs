@@ -34,6 +34,12 @@ namespace OrderForms
             this.buttonChange = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textCilent = new System.Windows.Forms.TextBox();
+            this.textID = new System.Windows.Forms.TextBox();
+            this.labelClient = new System.Windows.Forms.Label();
+            this.labelI = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonFinish = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -43,17 +49,11 @@ namespace OrderForms
             this.labelNum = new System.Windows.Forms.Label();
             this.labelPrize = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textCilent = new System.Windows.Forms.TextBox();
-            this.textID = new System.Windows.Forms.TextBox();
-            this.labelClient = new System.Windows.Forms.Label();
-            this.labelI = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textChangeID
@@ -70,18 +70,18 @@ namespace OrderForms
             this.labelChangeID.AutoSize = true;
             this.labelChangeID.Location = new System.Drawing.Point(288, 37);
             this.labelChangeID.Name = "labelChangeID";
-            this.labelChangeID.Size = new System.Drawing.Size(23, 15);
+            this.labelChangeID.Size = new System.Drawing.Size(38, 15);
             this.labelChangeID.TabIndex = 1;
-            this.labelChangeID.Text = "ID";
+            this.labelChangeID.Text = "原ID";
             // 
             // buttonChange
             // 
             this.buttonChange.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonChange.Location = new System.Drawing.Point(357, 260);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(75, 23);
+            this.buttonChange.Size = new System.Drawing.Size(100, 30);
             this.buttonChange.TabIndex = 2;
-            this.buttonChange.Text = "Change";
+            this.buttonChange.Text = "修改订单";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
@@ -104,98 +104,15 @@ namespace OrderForms
             this.panel2.Size = new System.Drawing.Size(800, 350);
             this.panel2.TabIndex = 4;
             // 
-            // panel4
+            // panel5
             // 
-            this.panel4.Controls.Add(this.buttonFinish);
-            this.panel4.Controls.Add(this.buttonAdd);
-            this.panel4.Controls.Add(this.textNum);
-            this.panel4.Controls.Add(this.textPrize);
-            this.panel4.Controls.Add(this.textName);
-            this.panel4.Controls.Add(this.labelNum);
-            this.panel4.Controls.Add(this.labelPrize);
-            this.panel4.Controls.Add(this.labelName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(800, 350);
-            this.panel4.TabIndex = 1;
-            this.panel4.Visible = false;
-            // 
-            // buttonFinish
-            // 
-            this.buttonFinish.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonFinish.Location = new System.Drawing.Point(357, 309);
-            this.buttonFinish.Name = "buttonFinish";
-            this.buttonFinish.Size = new System.Drawing.Size(75, 23);
-            this.buttonFinish.TabIndex = 7;
-            this.buttonFinish.Text = "Finish";
-            this.buttonFinish.UseVisualStyleBackColor = true;
-            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonAdd.Location = new System.Drawing.Point(357, 260);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 6;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // textNum
-            // 
-            this.textNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textNum.Location = new System.Drawing.Point(401, 204);
-            this.textNum.Name = "textNum";
-            this.textNum.Size = new System.Drawing.Size(100, 25);
-            this.textNum.TabIndex = 5;
-            // 
-            // textPrize
-            // 
-            this.textPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textPrize.Location = new System.Drawing.Point(401, 122);
-            this.textPrize.Name = "textPrize";
-            this.textPrize.Size = new System.Drawing.Size(100, 25);
-            this.textPrize.TabIndex = 4;
-            // 
-            // textName
-            // 
-            this.textName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textName.Location = new System.Drawing.Point(401, 40);
-            this.textName.Name = "textName";
-            this.textName.Size = new System.Drawing.Size(100, 25);
-            this.textName.TabIndex = 3;
-            // 
-            // labelNum
-            // 
-            this.labelNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelNum.AutoSize = true;
-            this.labelNum.Location = new System.Drawing.Point(272, 214);
-            this.labelNum.Name = "labelNum";
-            this.labelNum.Size = new System.Drawing.Size(31, 15);
-            this.labelNum.TabIndex = 2;
-            this.labelNum.Text = "Num";
-            // 
-            // labelPrize
-            // 
-            this.labelPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelPrize.AutoSize = true;
-            this.labelPrize.Location = new System.Drawing.Point(272, 132);
-            this.labelPrize.Name = "labelPrize";
-            this.labelPrize.Size = new System.Drawing.Size(47, 15);
-            this.labelPrize.TabIndex = 1;
-            this.labelPrize.Text = "Prize";
-            // 
-            // labelName
-            // 
-            this.labelName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(272, 50);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(39, 15);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Name";
+            this.panel5.Controls.Add(this.panel4);
+            this.panel5.Controls.Add(this.panel3);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(800, 350);
+            this.panel5.TabIndex = 2;
             // 
             // panel3
             // 
@@ -232,9 +149,9 @@ namespace OrderForms
             this.labelClient.AutoSize = true;
             this.labelClient.Location = new System.Drawing.Point(288, 166);
             this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(87, 15);
+            this.labelClient.Size = new System.Drawing.Size(67, 15);
             this.labelClient.TabIndex = 1;
-            this.labelClient.Text = "New Client";
+            this.labelClient.Text = "修改客户";
             // 
             // labelI
             // 
@@ -242,19 +159,102 @@ namespace OrderForms
             this.labelI.AutoSize = true;
             this.labelI.Location = new System.Drawing.Point(288, 65);
             this.labelI.Name = "labelI";
-            this.labelI.Size = new System.Drawing.Size(55, 15);
+            this.labelI.Size = new System.Drawing.Size(53, 15);
             this.labelI.TabIndex = 0;
-            this.labelI.Text = "New ID";
+            this.labelI.Text = "修改ID";
             // 
-            // panel5
+            // panel4
             // 
-            this.panel5.Controls.Add(this.panel3);
-            this.panel5.Controls.Add(this.panel4);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(800, 350);
-            this.panel5.TabIndex = 2;
+            this.panel4.Controls.Add(this.buttonFinish);
+            this.panel4.Controls.Add(this.buttonAdd);
+            this.panel4.Controls.Add(this.textNum);
+            this.panel4.Controls.Add(this.textPrize);
+            this.panel4.Controls.Add(this.textName);
+            this.panel4.Controls.Add(this.labelNum);
+            this.panel4.Controls.Add(this.labelPrize);
+            this.panel4.Controls.Add(this.labelName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(800, 350);
+            this.panel4.TabIndex = 1;
+            this.panel4.Visible = false;
+            // 
+            // buttonFinish
+            // 
+            this.buttonFinish.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonFinish.Location = new System.Drawing.Point(326, 308);
+            this.buttonFinish.Name = "buttonFinish";
+            this.buttonFinish.Size = new System.Drawing.Size(150, 30);
+            this.buttonFinish.TabIndex = 7;
+            this.buttonFinish.Text = "完成修改";
+            this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonAdd.Location = new System.Drawing.Point(326, 260);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(150, 30);
+            this.buttonAdd.TabIndex = 6;
+            this.buttonAdd.Text = "增加订单详细";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // textNum
+            // 
+            this.textNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textNum.Location = new System.Drawing.Point(401, 204);
+            this.textNum.Name = "textNum";
+            this.textNum.Size = new System.Drawing.Size(100, 25);
+            this.textNum.TabIndex = 5;
+            // 
+            // textPrize
+            // 
+            this.textPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textPrize.Location = new System.Drawing.Point(401, 122);
+            this.textPrize.Name = "textPrize";
+            this.textPrize.Size = new System.Drawing.Size(100, 25);
+            this.textPrize.TabIndex = 4;
+            // 
+            // textName
+            // 
+            this.textName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textName.Location = new System.Drawing.Point(401, 40);
+            this.textName.Name = "textName";
+            this.textName.Size = new System.Drawing.Size(100, 25);
+            this.textName.TabIndex = 3;
+            // 
+            // labelNum
+            // 
+            this.labelNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelNum.AutoSize = true;
+            this.labelNum.Location = new System.Drawing.Point(272, 214);
+            this.labelNum.Name = "labelNum";
+            this.labelNum.Size = new System.Drawing.Size(67, 15);
+            this.labelNum.TabIndex = 2;
+            this.labelNum.Text = "商品数量";
+            // 
+            // labelPrize
+            // 
+            this.labelPrize.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelPrize.AutoSize = true;
+            this.labelPrize.Location = new System.Drawing.Point(272, 132);
+            this.labelPrize.Name = "labelPrize";
+            this.labelPrize.Size = new System.Drawing.Size(67, 15);
+            this.labelPrize.TabIndex = 1;
+            this.labelPrize.Text = "商品单价";
+            // 
+            // labelName
+            // 
+            this.labelName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(272, 50);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(52, 15);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "商品名";
             // 
             // ChangeForm
             // 
@@ -269,11 +269,11 @@ namespace OrderForms
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

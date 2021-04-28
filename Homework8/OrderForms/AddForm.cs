@@ -70,7 +70,7 @@ namespace OrderForms
 
                 //Console.WriteLine(orderService);
 
-                MessageBox.Show("Add details successfully!");
+                MessageBox.Show("添加订单明细成功!");
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace OrderForms
 
                 addToMainDelegate.Invoke(this.orderService);
 
-                MessageBox.Show("Add order successfully!");
+                MessageBox.Show("添加订单成功!");
 
                 this.Close();
             }

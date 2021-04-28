@@ -49,9 +49,9 @@ namespace OrderForms
             this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonDelete.Location = new System.Drawing.Point(323, 286);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(100, 30);
             this.buttonDelete.TabIndex = 1;
-            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.Text = "删除订单";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 

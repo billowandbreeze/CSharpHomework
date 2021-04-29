@@ -9,7 +9,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace Crawler
+namespace CrawlerSpace
 {
     class Program
     {
@@ -24,9 +24,9 @@ namespace Crawler
 
             //crawler.Crawl();
 
-            //new Thread(crawler.Crawl).Start();
+            //crawler.Crawl1();
 
-            new Thread(crawler.CrawlerOnlyCurrent).Start();
+            crawler.Crawl2();
 
             Console.ReadKey();
         }

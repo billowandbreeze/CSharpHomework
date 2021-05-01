@@ -22,43 +22,31 @@ namespace CrawlerForm
         private void buttonNormal_Click(object sender, EventArgs e)
         {
             crawler = new Crawler();
+            string s = crawler.getHttp(textBox1.Text);
+            crawler.selectAll(s);
 
-            string startUrl = textBox1.Text;
-
-            //加入初始界面，设置初始值为false
-            crawler.URLS.Add(startUrl, false);
-
-            crawler.Crawl();
-
-            richTextBox1.Text = crawler.res;
+            richTextBox1.Text = crawler.ToString();
+            crawler.urls.Clear();
         }
 
         private void buttonCurrent_Click(object sender, EventArgs e)
         {
             crawler = new Crawler();
+            string s = crawler.getHttp(textBox1.Text);
+            crawler.selectURLS(s);
 
-            string startUrl = textBox1.Text;
-
-            //加入初始界面，设置初始值为false
-            crawler.URLS.Add(startUrl, false);
-
-            crawler.Crawl1();
-
-            richTextBox1.Text = crawler.res;
+            richTextBox1.Text = crawler.ToString();
+            crawler.urls.Clear();
         }
 
         private void buttonEnd_Click(object sender, EventArgs e)
         {
             crawler = new Crawler();
+            string s = crawler.getHttp(textBox1.Text);
+            crawler.selectEndURLS(s);
 
-            string startUrl = textBox1.Text;
-
-            //加入初始界面，设置初始值为false
-            crawler.URLS.Add(startUrl, false);
-
-            crawler.Crawl2();
-
-            richTextBox1.Text = crawler.res;
+            richTextBox1.Text = crawler.ToString();
+            crawler.urls.Clear();
         }
     }
 }

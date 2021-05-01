@@ -16,19 +16,28 @@ namespace CrawlerSpace
         static void Main(string[] args)
         {
             Crawler crawler = new Crawler();
+            string s = crawler.getHttp("http://www.cnblogs.com/dstang2000/");
 
-            string startUrl = "http://www.cnblogs.com/dstang2000/";
+            Console.WriteLine("获得网页...");
+            //Console.WriteLine(s);
 
-            //加入初始界面，设置初始值为false
-            crawler.URLS.Add(startUrl, false);
+            //crawler.selectURLS(s);
+            //crawler.selectEndURLS(s);
 
-            //crawler.Crawl();
+            crawler.selectAll(s);
 
-            //crawler.Crawl1();
+            Console.WriteLine(crawler.ToString());
 
-            crawler.Crawl2();
+            /*
+            foreach(String url in crawler.urls)
+            {
+                Console.WriteLine(url);
+            }
+            */
 
-            Console.ReadKey();
+            Console.WriteLine("爬取完成...");
+
+            Console.ReadLine();
         }
     }
 }

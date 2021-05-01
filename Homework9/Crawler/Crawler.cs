@@ -1,226 +1,118 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 using System.IO;
 using System.Net;
+using System.Collections;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace CrawlerSpace
 {
     public class Crawler
     {
-        private Hashtable urls = new Hashtable();
-        private int count = 0;
-        public String res
+        public Queue<String> urls = new Queue<string>();
+
+        //读取网页上的所有信息
+        public string getHttp(String url)
         {
-            get;
-            set;
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            httpWebRequest.Method = "GET";
+            httpWebRequest.Timeout = 20000;
+
+            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.UTF8);
+
+            String res = streamReader.ReadToEnd();
+
+            streamReader.Close();
+            httpWebResponse.Close();
+
+            return res;
         }
 
-        public Hashtable URLS
+        //筛选所有网址
+        public void selectURLS(String html)
         {
-            get
-            {
-                return urls;
-            }
-        }
-
-        public Crawler()
-        {
-
-        }
-
-        /*教材爬虫程序*/
-        public void Crawl()
-        {
-            res = "开始爬行了.... ";
-
-            while (true)
-            {
-                string current = FindUrl();
-
-                if (current == null || count > 50)
-                {
-                    break;
-                }
-
-                res += "\n爬行" + current + "页面!";
-
-                //获得当前网址
-                string html = DownLoad(current); 
-
-                //设置网址当前值为true，表示已经访问过
-                urls[current] = true;
-
-                //访问网址数加一
-                count++;
-
-                //解析
-                Parse(html);
-            }
-
-            res += "\n爬行结束";
-        }
-
-        /*修改爬虫程序：仅爬取当前页面*/
-        public void Crawl1()
-        {
-            res = "开始爬行了.... ";
-            string start = FindUrl();
-            res += "\n爬行" + start + "页面!";
-
-            string html = DownLoad(start);
-            urls[start] = true;
-            count++;
-            Parse(html);
-
-
-            while (true)
-            {
-                string current = FindUrl();
-
-                if (current == null || count > 50)
-                {
-                    break;
-                }
-
-                Console.WriteLine("爬行" + current + "页面!");
-                html = DownLoad(current);
-                urls[current] = true;
-                count++;
-            }
-
-            res += "爬行结束了";
-        }
-
-        /*修改爬虫程序：仅爬取html、jsp、aspx*/
-        public void Crawl2()
-        {
-            res = "开始爬行了.... ";
-
-            while (true)
-            {
-                string current = FindUrl();
-
-                if (current == null || count > 50)
-                {
-                    break;
-                }
-
-                res += "\n爬行" + current + "页面!";
-                string html = DownLoad(current);
-                urls[current] = true;
-                count++;
-                Parse1(html);
-            }
-
-            res += "\n爬行结束";
-        }
-
-        private void Parse(string html)
-        {
-            string strRef = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
-
-            MatchCollection matches = new Regex(strRef).Matches(html);
+            string expression = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
+            MatchCollection matches = new Regex(expression).Matches(html);
 
             foreach (Match match in matches)
             {
-                strRef = match.Value.Substring(match.Value.IndexOf('=') + 1).Trim('"', '\"', '#', '>');
+                String url = match.Value.Substring(match.Value.IndexOf('=') + 1).Trim('"', '\"', '#', '>');
 
-                if (strRef.Length == 0)
+                if (expression.Length == 0)
                 {
                     continue;
                 }
 
-                if (urls[strRef] == null)
-                {
-                    urls[strRef] = false;
-                }
+                urls.Enqueue(url);
             }
         }
 
-        private void Parse1(string html)
+        //筛选固定结尾网址
+        public void selectEndURLS(String html)
         {
-            string strRef = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
-
-            MatchCollection matches = new Regex(strRef).Matches(html);
+            string expression = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
+            MatchCollection matches = new Regex(expression).Matches(html);
 
             foreach (Match match in matches)
             {
-                strRef = match.Value.Substring(match.Value.IndexOf('=') + 1).Trim('"', '\"', '#', '>');
+                String url = match.Value.Substring(match.Value.IndexOf('=') + 1).Trim('"', '\"', '#', '>');
 
-                if (strRef.Length == 0)
+                if (expression.Length == 0)
                 {
                     continue;
                 }
 
-                if (strRef.ToString().EndsWith(".jsp") || strRef.ToString().EndsWith(".html") || strRef.ToString().EndsWith(".aspx"))
+                if (url.ToString().EndsWith(".jsp") || url.ToString().EndsWith(".html") || url.ToString().EndsWith(".aspx"))
                 {
-                    if (urls[strRef] == null)
-                    {
-                        urls[strRef] = false;
-                    }
+                    urls.Enqueue(url);
                 }
             }
         }
 
-        /*相对地址转化为绝对地址???*/
-        public static void GetUrlListBHtml(string text, string pre)
+        //遍历访问
+        public void selectAll(String html)
         {
-            string pat = @" (?<=href\s*=)(?:[ \s""']*)(?!#|mailto|location.|javascript|.*css|.*this\.)[^""']*(?:[ \s>""']) ";
-            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(pat, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            System.Text.RegularExpressions.Match m = r.Match(text);
+            urls.Clear();
 
-            while (m.Success)
-            {
-                string urlX = m.Value.Replace(" \"" , "" );
-                 if (urlX.IndexOf(" / ") == 0) // 相对地址
-                {
-                    Console.WriteLine(" 原地址是 " + urlX);
-                    Console.WriteLine(" 新的绝对地址是 " + pre + urlX);
-                }
-                m = m.NextMatch();
-            }
-        }
+            int count = 0;
+            selectURLS(html);
 
-        private String FindUrl()
-        {
-            foreach (string url in urls.Keys)
+            Queue<String> temp = new Queue<string>();
+
+            while (true)
             {
-                //如果该网址布尔值为true，跳过
-                if ((bool)urls[url])
+                if (urls.Count == 0 || count > 50)
                 {
-                    continue;
+                    break;
                 }
 
-                return url;
+                String tempUrl = urls.Dequeue();
+                temp.Enqueue(tempUrl);
+                count++;
+
+                selectURLS(tempUrl);
             }
 
-            return null;
+            foreach(String s in temp)
+            {
+                urls.Enqueue(s);
+            }
+            temp.Clear();
         }
 
-        private string DownLoad(string url)
+        public override string ToString()
         {
-            try
-            {
-                WebClient webClient = new WebClient();
-                webClient.Encoding = Encoding.UTF8;
+            String res = "";
 
-                string html = webClient.DownloadString(url);
-                string fileName = count.ToString();
-
-                File.WriteAllText(fileName, html, Encoding.UTF8);
-                return html;
-            }
-            catch (Exception ex)
+            foreach (String url in urls)
             {
-                Console.WriteLine(ex.Message);
-                return "";
+                res = res + url + "\n";
             }
+
+            return res;
         }
     }
 }

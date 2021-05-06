@@ -48,7 +48,15 @@ namespace CrawlerForm
 
         private void buttonThread_Click(object sender, EventArgs e)
         {
-            
+            crawler = new Crawler();
+
+            ThreadStart childref = new ThreadStart(() => crawler.selectEndURLS(textBox1.Text));
+            Thread childThread = new Thread(childref);
+            childThread.Start();
+
+            childThread.Join();
+            richTextBox1.Text = crawler.ToString();
+            crawler.urls.Clear();
         }
     }
 }

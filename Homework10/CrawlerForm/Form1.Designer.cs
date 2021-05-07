@@ -30,6 +30,7 @@ namespace CrawlerForm
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonThread = new System.Windows.Forms.Button();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.buttonCurrent = new System.Windows.Forms.Button();
             this.buttonNormal = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace CrawlerForm
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonThread = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,16 @@ namespace CrawlerForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonThread
+            // 
+            this.buttonThread.Location = new System.Drawing.Point(45, 328);
+            this.buttonThread.Name = "buttonThread";
+            this.buttonThread.Size = new System.Drawing.Size(100, 30);
+            this.buttonThread.TabIndex = 5;
+            this.buttonThread.Text = "多线程";
+            this.buttonThread.UseVisualStyleBackColor = true;
+            this.buttonThread.Click += new System.EventHandler(this.buttonThread_Click);
             // 
             // buttonEnd
             // 
@@ -136,16 +146,6 @@ namespace CrawlerForm
             this.label2.Size = new System.Drawing.Size(76, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "已爬取URL";
-            // 
-            // buttonThread
-            // 
-            this.buttonThread.Location = new System.Drawing.Point(45, 328);
-            this.buttonThread.Name = "buttonThread";
-            this.buttonThread.Size = new System.Drawing.Size(100, 30);
-            this.buttonThread.TabIndex = 5;
-            this.buttonThread.Text = "多线程";
-            this.buttonThread.UseVisualStyleBackColor = true;
-            this.buttonThread.Click += new System.EventHandler(this.buttonThread_Click);
             // 
             // Form1
             // 

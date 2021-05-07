@@ -21,6 +21,7 @@ namespace CrawlerForm
 
         private void buttonNormal_Click(object sender, EventArgs e)
         {
+
             crawler = new Crawler();
             crawler.selectAll(textBox1.Text);
 
@@ -30,6 +31,7 @@ namespace CrawlerForm
 
         private void buttonCurrent_Click(object sender, EventArgs e)
         {
+
             crawler = new Crawler();
             crawler.selectURLS(textBox1.Text);
 
@@ -39,6 +41,7 @@ namespace CrawlerForm
 
         private void buttonEnd_Click(object sender, EventArgs e)
         {
+
             crawler = new Crawler();
             crawler.selectEndURLS(textBox1.Text);
 
@@ -48,15 +51,8 @@ namespace CrawlerForm
 
         private void buttonThread_Click(object sender, EventArgs e)
         {
-            crawler = new Crawler();
-
-            ThreadStart childref = new ThreadStart(() => crawler.selectEndURLS(textBox1.Text));
-            Thread childThread = new Thread(childref);
-            childThread.Start();
-
-            childThread.Join();
-            richTextBox1.Text = crawler.ToString();
-            crawler.urls.Clear();
+            Form2 form2 = new Form2();
+            form2.Show();
         }
     }
 }

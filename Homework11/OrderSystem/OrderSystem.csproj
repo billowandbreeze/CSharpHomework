@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{637FB442-D0B9-4357-90EA-8657AFB980EF}</ProjectGuid>
+    <ProjectGuid>{54C6E0DA-7D81-44F6-8936-C2E2CC74E8BE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>OrderSystem</RootNamespace>
     <AssemblyName>OrderSystem</AssemblyName>
@@ -66,7 +66,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -84,7 +83,7 @@
     <Compile Include="Good.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderContext.cs" />
-    <Compile Include="OrderDetails.cs" />
+    <Compile Include="OrderDetail.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,69 +6,39 @@ using System.Text;
 
 namespace OrderManageSystem
 {
-    [Table("Order")]
     [Serializable]
     public class Order
     {
-        /*
-        [Key]
-        [Required]
-        public int Id { get; set; }
-        [StringLength(32)]
-        
-        public string StuName { get; set; }
-        public DateTime SubTime { get; set; }
-     
-        //一个学生 只能对应 一个班级
-        public virtual ClassInfo ClassInfo { get; set; }
-        */
-
-
         //----------------------属性----------------------
-        [Key]
-        [Required]
-        [StringLength(32)]
-        public String ID
-        {
-            get; set;
-        }
+        public String Id { get; set; }
 
-        public virtual Client Client
-        {
-            get; set;
-        }
+        public virtual Client Client { get; set; }
 
-        public double TotalPrize
-        {
-            get; set;
-        }
+        public double TotalPrize { get; set; }
 
-        public virtual List<OrderDetails> Details
-        {
-            get; set;
-        }
+        public virtual List<OrderDetail> OrderDetails { get; set; }
 
         //----------------------构造器----------------------
         public Order()
         {
-            Details = new List<OrderDetails>();
+            OrderDetails = new List<OrderDetail>();
         }
 
         public Order(String ID, Client Client)
         {
-            this.ID = ID;
+            this.Id = ID;
             this.Client = Client;
             TotalPrize = 0;
-            Details = new List<OrderDetails>();
+            OrderDetails = new List<OrderDetail>();
         }
 
 
         //----------------------找到订单的工具----------------------
-        private OrderDetails AddOrderTool(Good good)
+        private OrderDetail AddOrderTool(Good good)
         {
-            foreach (OrderDetails o in Details)
+            foreach (OrderDetail o in OrderDetails)
             {
-                if (o.Goods == good)
+                if (o.GoodItem == good)
                 {
                     return o;
                 }
@@ -77,9 +47,9 @@ namespace OrderManageSystem
             return null;
         }
 
-        private OrderDetails FindOrderTool(OrderDetails orderDetails)
+        private OrderDetail FindOrderTool(OrderDetail orderDetails)
         {
-            foreach(OrderDetails o in Details)
+            foreach(OrderDetail o in OrderDetails)
             {
                 if(o == orderDetails)
                 {
@@ -92,24 +62,24 @@ namespace OrderManageSystem
 
 
         //----------------------订单明细的增删改查----------------------
-        public void AddDetails(OrderDetails orderDetails)
+        public void AddDetails(OrderDetail orderDetails)
         {
-            if(AddOrderTool(orderDetails.Goods) != null)
+            if(AddOrderTool(orderDetails.GoodItem) != null)
             {
-                AddOrderTool(orderDetails.Goods).Num += orderDetails.Num;
+                AddOrderTool(orderDetails.GoodItem).Num += orderDetails.Num;
             }
             else
             {
-                Details.Add(orderDetails);
+                OrderDetails.Add(orderDetails);
             }
         }
 
 
-        public void RemoveDetails(OrderDetails orderDetails)
+        public void RemoveDetails(OrderDetail orderDetails)
         {
             if(FindOrderTool(orderDetails) != null)
             {
-                Details.Remove(FindOrderTool(orderDetails));
+                OrderDetails.Remove(FindOrderTool(orderDetails));
             }
             else
             {
@@ -119,11 +89,11 @@ namespace OrderManageSystem
         }
 
 
-        public void ChangeDetails(OrderDetails oldOrderDetails, OrderDetails newOrderDetails)
+        public void ChangeDetails(OrderDetail oldOrderDetails, OrderDetail newOrderDetails)
         {
             if(FindOrderTool(oldOrderDetails) != null)
             {
-                Details.Remove(FindOrderTool(oldOrderDetails));
+                OrderDetails.Remove(FindOrderTool(oldOrderDetails));
                 AddDetails(newOrderDetails);
             }
             else
@@ -133,11 +103,11 @@ namespace OrderManageSystem
             }
         }
 
-        public OrderDetails FindDetails(Good goods, int num)
+        public OrderDetail FindDetails(Good goods, int num)
         {
-            foreach(OrderDetails o in Details)
+            foreach(OrderDetail o in OrderDetails)
             {
-                if(o.Goods == goods && o.Num == num)
+                if(o.GoodItem == goods && o.Num == num)
                 {
                     return o;
                 }
@@ -157,15 +127,15 @@ namespace OrderManageSystem
             }
 
             return obj is Order order &&
-                   ID == order.ID;
+                   Id == order.Id;
         }
 
         public override string ToString()
         {
-            String res = "ID: " + ID + "\n" + Client + "\n";
+            String res = "ID: " + Id + "\n" + Client + "\n";
 
 
-            foreach(OrderDetails o in Details)
+            foreach(OrderDetail o in OrderDetails)
             {
                 res += o.ToString();
                 res += "\n";

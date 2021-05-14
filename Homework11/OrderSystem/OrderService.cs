@@ -4,117 +4,97 @@ using System.Text;
 using System.Linq;
 using System.Xml.Serialization;
 using System.IO;
+using OrderSystem;
 
 namespace OrderManageSystem
 {
     public class OrderService
     {
-        //----------------------属性----------------------
-        public List<Order> Orders
-        {
-            get; set;
-        }
-
         //----------------------找订单的工具----------------------
         private Order FindOrderTool(Order order)
         {
-            foreach(Order o in Orders)
+            using (var oc = new OrderContext())
             {
-                if(o == order)
-                {
-                    return o;
-                }
-            }
+                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", order.Id);
 
-            return null;
+                return query.FirstOrDefault();
+            }
         }
 
         //----------------------订单的增删改查----------------------
         public void AddOrder(Order order)
         {
-            //如果已经存在相同订单，则在有错误
-            foreach (Order o in Orders)
+            using (var oc = new OrderContext())
             {
-                if(o == order)
-                {
-                    Exception e = new Exception("The same order!");
-                    throw e;
-                }
+                oc.Orders.Add(order);
+                oc.SaveChanges();
             }
-
-            Orders.Add(order);
         }
 
         public void RemoveOrder(Order order)
         {
-            if(FindOrderTool(order) != null)
+            using (var oc = new OrderContext())
             {
-                Orders.Remove(FindOrderTool(order));
-            }
-            else
-            {
-                Exception e = new Exception("Can't remove: can't find the order!");
-                throw e;
+                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", order.Id);
+
+                oc.Orders.RemoveRange(query);
+                oc.SaveChanges();
             }
         }
 
         public void ChangeOrder(Order oldOrder, Order newOrder)
         {
-            if (FindOrderTool(oldOrder) != null)
+            using (var oc = new OrderContext())
             {
-                Orders.Remove(FindOrderTool(oldOrder));
-                AddOrder(newOrder);
-            }
-            else
-            {
-                Exception e = new Exception("Can't change: can't find the order!");
-                throw e;
+                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", oldOrder.Id);
+                oc.Orders.RemoveRange(query);
+
+                oc.Orders.Add(newOrder);
+
+                oc.SaveChanges();
             }
         }
 
         public Order FindOrder(String id)
         {
-            foreach (Order o in Orders)
+            using (var oc = new OrderContext())
             {
-                if (o.ID == id)
-                {
-                    return o;
-                }
-            }
+                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", id);
 
-            Exception e = new Exception("Can't find the order!");
-            throw e;
+                return query.FirstOrDefault();
+            }
         }
 
 
         //----------------------各种查询功能----------------------
         public List<Order> FindOrderById(String id)
         {
-            var order = from o in Orders
-                        where o.ID == id
-                        select o;
+            using (var oc = new OrderContext())
+            {
+                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", id);
 
-            return order.ToList();
+                return query.ToList();
+            }
         }
 
-        public List<Order> FindOrderByClient(String name)
+        public List<Order> FindOrderByClient(Client client)
         {
-            var order = from o in Orders
-                        where o.Client.Name == name
-                        orderby o.TotalPrize descending
-                        select o;
+            using (var oc = new OrderContext())
+            {
+                var query = oc.Orders.SqlQuery("select * from [orders] where Client_Id = {0}", client.Id);
 
-            return order.ToList();
+                return query.ToList();
+            }
         }
 
         public List<Order> FindOrderByPrize(int prize)
         {
-            var order = from o in Orders
-                        where o.TotalPrize <= prize
-                        orderby o.ID
-                        select o;
+            using (var oc = new OrderContext())
+            {
+                var query = oc.Orders.SqlQuery("select * from [orders] where [TotalPrize] <= {0}", prize);
 
-            return order.ToList();
+                return query.ToList();
+            }
         }
 
         //----------------------重写方法----------------------
@@ -122,27 +102,23 @@ namespace OrderManageSystem
         {
             String res = "";
 
-            foreach (Order o in Orders)
-            {
-                res += o.ToString();
-                res += "\n";
+            using (var oc = new OrderContext())
+            {                
+                var query = oc.Orders.SqlQuery("select * from [orders]");
+
+                foreach (var q in query)
+                {
+                    res = res + "\n" + q.ToString();
+                }
             }
 
             return res;
         }
 
-        public override bool Equals(object obj)
-        {
-            if(obj == null)
-            {
-                return false;
-            }
 
-            return obj is OrderService service &&
-                   EqualityComparer<List<Order>>.Default.Equals(Orders, service.Orders);
-        }
 
         //----------------------序列化和反序列化----------------------
+        /*
         public void Export(String fileName)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Order>));
@@ -164,5 +140,6 @@ namespace OrderManageSystem
                 return temp;
             }
         }
+        */
     }
 }

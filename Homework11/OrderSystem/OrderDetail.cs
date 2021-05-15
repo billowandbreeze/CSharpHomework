@@ -13,18 +13,25 @@ namespace OrderManageSystem
 
         public int Num { get; set; }
 
-        public double Prize { get; set; }
+        public double Prize
+        {
+            get
+            {
+                return GoodItem.Prize * Num;
+            }
+        }
         
 
         //----------------------构造器----------------------
         public OrderDetail()
         {
-            Prize = 0;
+            
         }
 
-        public OrderDetail(Good Good, int Num)
+        public OrderDetail(String Id, Good GoodItem, int Num)
         {
-            this.GoodItem = Good;
+            this.Id = Id;
+            this.GoodItem = GoodItem;
             this.Num = Num;
         }
 

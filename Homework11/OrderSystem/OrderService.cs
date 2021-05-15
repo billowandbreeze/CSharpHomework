@@ -15,7 +15,7 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", order.Id);
+                var query = oc.Orders.SqlQuery("select * from orders where Id = {0}", order.Id);
 
                 return query.FirstOrDefault();
             }
@@ -35,7 +35,9 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", order.Id);
+                var query = oc.Orders.SqlQuery("select * from orders where Id = {0}", order.Id);
+
+                oc.OrderDetails.RemoveRange(query.FirstOrDefault().OrderDetails);
 
                 oc.Orders.RemoveRange(query);
                 oc.SaveChanges();
@@ -46,7 +48,8 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", oldOrder.Id);
+                var query = oc.Orders.SqlQuery("select * from orders where Id = {0}", oldOrder.Id);
+                oc.OrderDetails.RemoveRange(query.FirstOrDefault().OrderDetails);
                 oc.Orders.RemoveRange(query);
 
                 oc.Orders.Add(newOrder);
@@ -59,7 +62,7 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", id);
+                var query = oc.Orders.SqlQuery("select * from orders where Id = {0}", id);
 
                 return query.FirstOrDefault();
             }
@@ -71,7 +74,7 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [Id] = {0}", id);
+                var query = oc.Orders.SqlQuery("select * from orders where Id = {0}", id);
 
                 return query.ToList();
             }
@@ -81,7 +84,7 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where Client_Id = {0}", client.Id);
+                var query = oc.Orders.SqlQuery("select * from orders where Client_Id = {0}", client.Id);
 
                 return query.ToList();
             }
@@ -91,7 +94,7 @@ namespace OrderManageSystem
         {
             using (var oc = new OrderContext())
             {
-                var query = oc.Orders.SqlQuery("select * from [orders] where [TotalPrize] <= {0}", prize);
+                var query = oc.Orders.SqlQuery("select * from orders where TotalPrize <= {0}", prize);
 
                 return query.ToList();
             }
@@ -104,7 +107,7 @@ namespace OrderManageSystem
 
             using (var oc = new OrderContext())
             {                
-                var query = oc.Orders.SqlQuery("select * from [orders]");
+                var query = oc.Orders.SqlQuery("select * from orders");
 
                 foreach (var q in query)
                 {

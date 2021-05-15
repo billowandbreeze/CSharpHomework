@@ -14,7 +14,20 @@ namespace OrderManageSystem
 
         public virtual Client Client { get; set; }
 
-        public double TotalPrize { get; set; }
+        public double TotalPrize
+        {
+            get
+            {
+                double res = 0;
+
+                foreach(OrderDetail o in OrderDetails)
+                {
+                    res += o.Prize;
+                }
+
+                return res;
+            }
+        }
 
         public virtual List<OrderDetail> OrderDetails { get; set; }
 
@@ -28,7 +41,6 @@ namespace OrderManageSystem
         {
             this.Id = ID;
             this.Client = Client;
-            TotalPrize = 0;
             OrderDetails = new List<OrderDetail>();
         }
 
@@ -64,14 +76,7 @@ namespace OrderManageSystem
         //----------------------订单明细的增删改查----------------------
         public void AddDetails(OrderDetail orderDetails)
         {
-            if(AddOrderTool(orderDetails.GoodItem) != null)
-            {
-                AddOrderTool(orderDetails.GoodItem).Num += orderDetails.Num;
-            }
-            else
-            {
-                OrderDetails.Add(orderDetails);
-            }
+            OrderDetails.Add(orderDetails);
         }
 
 

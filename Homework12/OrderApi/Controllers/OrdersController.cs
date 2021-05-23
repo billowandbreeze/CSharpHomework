@@ -11,20 +11,20 @@ namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class OrdersController : ControllerBase
     {
         private readonly OrderContext orderContext;
 
-        public ClientsController(OrderContext orderContext)
+        public OrdersController(OrderContext orderContext)
         {
             this.orderContext = orderContext;
         }
 
         // GET api/values
         [HttpGet]
-        public ActionResult<List<Client>> Get(String Id)
+        public ActionResult<List<Order>> Get(String Id)
         {
-            IQueryable<Client> query = orderContext.Clients;
+            IQueryable<Order> query = orderContext.Orders;
             if (Id != null)
             {
                 query = query.Where(t => t.Id.Contains(Id));
@@ -34,11 +34,11 @@ namespace TodoApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Client> Post(Client client)
+        public ActionResult<Order> Post(Order order)
         {
             try
             {
-                orderContext.Clients.Add(client);
+                orderContext.Orders.Add(order);
                 orderContext.SaveChanges();
             }
             catch (Exception e)
@@ -46,7 +46,7 @@ namespace TodoApi.Controllers
                 return BadRequest(e.InnerException.Message);
             }
 
-            return client;
+            return order;
         }
     }
 }

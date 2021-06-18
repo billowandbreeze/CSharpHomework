@@ -11,7 +11,7 @@ namespace OrderSystem
     {
         static void Main(string[] args)
         {
-            /*初始化数据库语句
+            
             using (var oc = new OrderContext())
             {
                 var client = new Client("0002", "狗");
@@ -36,7 +36,7 @@ namespace OrderSystem
                     throw ex;
                 }
                 
-
+                /*
                 OrderService orderService = new OrderService();
 
                 var client = new Client("0003", "兔子");
@@ -48,13 +48,14 @@ namespace OrderSystem
                 var orderdetail2 = new OrderDetail("0005", good2, 20);
 
                 var order = new Order("0003", client);
+                */
 
 
                 Console.WriteLine("操作成功");
                 Console.Read();
             }
-            */
-
+            
+            /*
             OrderService orderService = new OrderService();
 
             var client = new Client("0003", "兔子");
@@ -84,6 +85,7 @@ namespace OrderSystem
 
             Console.WriteLine("完成");
             Console.ReadKey();
+            */
         }
     }
 }
